@@ -5,7 +5,7 @@ import { AppRoutingModule } from './app-routing-module';
 import { App } from './app';
 import { Header } from './Components/header/header';
 import { Footer } from './Components/footer/footer';
-import { About } from './Components/About/about';
+import { About } from './Components/home/about';
 
 @NgModule({
   declarations: [
