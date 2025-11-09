@@ -1,13 +1,23 @@
-.Container{
+.Container {
 
-   background-image: url('../../src/assets/cytonn-photography-n95VMLxqM2I-unsplash.jpg');
+    background-image: url('../../src/assets/cytonn-photography-n95VMLxqM2I-unsplash.jpg');
     filter: brightness(140%);
     background-repeat: no-repeat;
     background-size: cover;
-         font-family: "Edu NSW ACT Hand Pre", cursive;
+    font-family: "Edu NSW ACT Hand Pre", cursive;
 }
-.home{
+
+.home {
     background-color: black;
     height: 100vh;
-
+    font-family: "Aref Ruqaa", serif !important;
 }
+p{
+    font-size: 1.5rem !important;
+}
+  
+@media (max-width:425px) {
+p{
+    font-size: 1.2rem !important;
+    width: 75% !important;
+}}
