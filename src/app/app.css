@@ -1,0 +1,13 @@
+.Container{
+
+   background-image: url('../../src/assets/cytonn-photography-n95VMLxqM2I-unsplash.jpg');
+    filter: brightness(140%);
+    background-repeat: no-repeat;
+    background-size: cover;
+         font-family: "Edu NSW ACT Hand Pre", cursive;
+}
+.home{
+    background-color: black;
+    height: 100vh;
+
+}

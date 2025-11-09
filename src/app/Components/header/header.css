@@ -1,0 +1,21 @@
+.w-25{
+    width: 4rem !important ;
+}
+.navbar {
+    background-color: rgba(180, 180, 187, 0.422);
+}
+.btn{
+    background-color:  var(--primary-color) !important;
+     font-size: 1.1rem;
+}
+.nav-link:hover {
+    color: var(--primary-color) !important;
+    font-weight: bold;
+}
+.btn:hover{
+    border: 0.2rem solid var(--primary-color) !important;
+    background-color: transparent !important;
+    color: var(--primary-color) !important;
+    font-weight: bold !important;
+    font-size: 1.1rem;
+}
