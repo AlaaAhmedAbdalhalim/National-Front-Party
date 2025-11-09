@@ -1,4 +1,5 @@
-import { Component, OnInit, signal } from '@angular/core';
+import { isPlatformBrowser } from '@angular/common';
+import { Component, Inject, OnInit, PLATFORM_ID, signal } from '@angular/core';
 import * as AOS from 'aos'; 
 @Component({
   selector: 'app-root',
@@ -7,12 +8,14 @@ import * as AOS from 'aos';
   styleUrl: './app.css'
 })
 export class App implements OnInit {
- ngOnInit(): void {
-  AOS.init({
-    duration: 800, // مدة الحركة بالمللي ثانية
-    once: false,   // true = تتحرك مرة واحدة فقط
-  });
-}
+   constructor(@Inject(PLATFORM_ID) private platformId: any) {}
 
-  protected readonly title = signal('Party');
+  ngOnInit(): void {
+    if (isPlatformBrowser(this.platformId)) {
+      AOS.init({
+        duration: 800,
+        once: false,
+      });
+    }
+  }
 }
