@@ -1,0 +1,26 @@
+.shadow-lg {
+  box-shadow: 0 0.5rem 1rem rgba(0, 0, 0, 0.7) !important;
+}
+.bg-light{
+       font-family: "Edu NSW ACT Hand Pre", cursive;
+       background-color: #F5F6F8 !important;
+
+}
+.icon{
+    color: var(--primary-color) !important;
+}
+.btn {
+    background-color: var(--primary-color) !important;
+    box-shadow: 0 0.6rem 0.4rem rgba(0, 0, 0, 0.15) !important;
+   
+}
+.text-justify{
+    text-align: justify;
+}
+.btn:hover {
+    border: 0.2rem solid var(--primary-color) !important;
+    background-color: transparent !important;
+    color: var(--primary-color) !important;
+    font-weight: bold !important;
+    font-size: 1.1rem;
+}
