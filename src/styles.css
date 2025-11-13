@@ -1,0 +1,25 @@
+/* 
+@import url('https://fonts.googleapis.com/css2?family=Amiri:wght@400;700&display=swap'); */
+@import url('https://fonts.googleapis.com/css2?family=Aref+Ruqaa:wght@400;700&display=swap');
+.aref-ruqaa-regular {
+  font-family: "Aref Ruqaa", serif;
+  font-weight: 400;
+  font-style: normal;
+}
+
+.aref-ruqaa-bold {
+  font-family: "Aref Ruqaa", serif;
+  font-weight: 700;
+  font-style: normal;
+}
+
+body {
+  font-family: "Aref Ruqaa", serif !important;
+}
+:root{
+    --primary-color:#003366;
+    --secandary-color: #ffe4c4;
+
+}
+html, body { height: 100%; }
+body { margin: 0; font-family: Roboto, "Helvetica Neue", sans-serif; }
