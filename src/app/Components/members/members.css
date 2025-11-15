@@ -1,23 +1,9 @@
-.bg-dark
-{
-        background-color: rgb(228, 228, 228) !important;
-}
-.icon{
-       font-family: "Edu NSW ACT Hand Pre", cursive;
-       color: var(--primary-color) !important;
-
-}
 h5 , p {
                font-family: "Edu NSW ACT Hand Pre", cursive;
-
 }
 
-h5{
-        color: var(--primary-color) !important;
+.card-img-overlay{
+  background-color: rgba(255, 255, 255, 0.6);
 }
-.member-box {
-  transition: 0.3s;
-}
-.member-box:hover {
-  transform: translateY(-8px);
-}
+.text-bg-dark{
+ background-color: #F5F6F8 !important;}

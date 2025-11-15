@@ -5,8 +5,8 @@
     <div class="row g-4 justify-content-center">
 
       <div class="col-6 col-md-4 col-lg-3" *ngFor="let m of members">
-        <div class="p-3 shadow rounded-4 bg-white member-box">
-          <img [src]="m.image" class=" mb-3 w-75 "  [alt]="m.name">
+        <div class=" shadow rounded-4 bg-white member-box ">
+          <img [src]="m.image" class="w-75"  [alt]="m.name">
           <h5 class="fw-bold pb-1">{{ m.name }}</h5>
           <p class="text-muted small">{{ m.position }}</p>
         </div>
@@ -15,3 +15,20 @@
     </div>
   </div>
 </section>
+
+ <section class="py-5 text-center">
+  <h2 class="fw-bold mb-5 icon">أعضاؤنا</h2>
+
+<div class="row g-4 mx-5">
+  <div class="col-6 col-md-3" *ngFor="let member of members">
+    <div class="card text-bg-dark border-0">
+      <img [src]="member.image" class="card-img" [alt]="member.name">
+      <div class="card-img-overlay d-flex flex-column justify-content-end h-25 ">
+        <h5 class="card-title text-secondary-emphasis fw-bold">{{ member.name }}</h5>
+        <p class="card-text text-secondary-emphasis">{{ member.position }} </p>
+       
+      </div>
+    </div>
+  </div>
+</div>
+</section> 
