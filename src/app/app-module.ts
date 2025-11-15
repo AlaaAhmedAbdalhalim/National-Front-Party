@@ -14,12 +14,13 @@ import { Members } from './Components/members/members';
     Header,
     Footer,
     About,
-    Members
+    
   ],
   imports: [
     BrowserModule,
     AppRoutingModule,
-    MatIconModule
+    MatIconModule,
+    Members
   ],
   providers: [
     provideBrowserGlobalErrorListeners(),
