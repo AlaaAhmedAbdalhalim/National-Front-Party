@@ -18,16 +18,11 @@
  h5 {
          color: var(--primary-color) !important;
  }
-.w-80{
-        width: 90% !important;
-}
-
 
  .overlay-box {
          height: min-content;
          top: auto !important;
          background-color: rgba(239, 239, 240, 0.8) !important;
-
  }
 
  .card {
