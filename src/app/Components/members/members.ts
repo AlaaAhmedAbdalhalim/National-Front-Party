@@ -7,7 +7,6 @@ import { Component } from '@angular/core';
   styleUrl: './members.css',
 })
 export class Members {
-<<<<<<< HEAD
 members = [
   {
     image: 'assets/Members/AhmedGhareeb.jpeg',
@@ -45,7 +44,5 @@ members = [
     role: 'عضو هيئة مكتبأمين الطاقة  والثروة المعدنية'
   },
 ];
-=======
->>>>>>> e99805045ef83ccf0cae60a39a0a4d345fd4fd23
 
 }
