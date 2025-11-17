@@ -14,7 +14,7 @@
          font-family: "Edu NSW ACT Hand Pre", cursive;
 
  }
-/* 
+
  h5 {
          color: var(--primary-color) !important;
  }
@@ -39,4 +39,4 @@
  .card:hover {
          transform: translateY(-8px);
          box-shadow: 0 10px 25px rgba(0, 0, 0, 0.15);
- } */
+ }
