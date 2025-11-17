@@ -27,3 +27,7 @@
     font-weight: bold !important;
     font-size: 1.1rem;
 }
+i{
+    color: var(--primary-color);
+    
+}
