@@ -6,9 +6,12 @@
        background-color: #F5F6F8 !important;
 
 }
-.icon{
-    color: var(--primary-color) !important;
-}
+
+ .icon {
+         font-family: "Edu NSW ACT Hand Pre", cursive;
+         color: var(--primary-color) !important;
+
+ }
 .btn {
     background-color: var(--primary-color) !important;
     box-shadow: 0 0.6rem 0.4rem rgba(0, 0, 0, 0.15) !important;

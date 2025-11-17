@@ -35,3 +35,13 @@
          transform: translateY(-8px);
          box-shadow: 0 10px 25px rgba(0, 0, 0, 0.15);
  }
+ .px-6 {
+        padding-left: 5rem !important;
+        padding-right: 5rem !important;
+ }
+ 
+a{
+
+    font-family: "Edu NSW ACT Hand Pre", cursive;
+    color: var(--primary-color) !important;
+}
