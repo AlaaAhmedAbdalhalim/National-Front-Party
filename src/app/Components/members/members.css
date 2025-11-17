@@ -1,8 +1,42 @@
-.card{
-           font-family: "Edu NSW ACT Hand Pre", cursive;
+ .bg-dark { 
+        background-color:    rgba(180, 180, 187, 0.422) !important;
+      
+ }
 
-}
-.card-text{
-        font-family: "Aref Ruqaa", serif !important;
+ .icon {
+         font-family: "Edu NSW ACT Hand Pre", cursive;
+         color: var(--primary-color) !important;
 
+ }
+
+ h5,
+ p {
+         font-family: "Edu NSW ACT Hand Pre", cursive;
+
+ }
+/* 
+ h5 {
+         color: var(--primary-color) !important;
+ }
+.w-80{
+        width: 90% !important;
 }
+
+
+ .overlay-box {
+         height: min-content;
+         top: auto !important;
+         background-color: rgba(239, 239, 240, 0.8) !important;
+
+ }
+
+ .card {
+         background: #fff;
+         transition: 0.3s ease;
+         box-shadow: 0.5rem 0.5rem 0.5rem rgb(129, 129, 129);
+ }
+
+ .card:hover {
+         transform: translateY(-8px);
+         box-shadow: 0 10px 25px rgba(0, 0, 0, 0.15);
+ } */

@@ -1,12 +1,15 @@
-<!-- <div class=" vh-100 d-flex flex-row justify-content-around">
- <div class="pt-5">
-  <h1 class="fs-1 text-center px-5 icon pb-1 fw-bolder pb-5">الأعضاء  </h1>
- 
-  <h4 class="fs-1 text-center card-text">أحمد غريب </h4>
-    <p class="card-text">This is a wider card with supporting text below as a natural lead-in to additional content. This content is a little bit longer.</p>
-    <p class="card-text"><small>Last updated 3 mins ago</small></p>
- </div>
-   
-    <img src="../../../assets/66547699481-removebg-preview.png" alt="" class=" w-25 h-75">
-  
-</div> -->
+ <section class="py-5 text-center  bg-dark">
+  <h2 class="fw-bold mb-5 icon">أعضاؤنا</h2>
+
+<div class="row g-4 mx-5">
+  <div class="col-6 col-md-3 mb-5" *ngFor="let member of members">
+    <div class="card text-bg-dark border-0 w-80">
+      <img [src]="member.image" class="card-img " [alt]="member.name">
+      <div class="card-img-overlay d-flex flex-column justify-content-end bg-white mt-5 overlay-box m-2">
+        <h5 class="card-title text-secondary-emphasis fw-bold fs-3">{{ member.name }}</h5>
+        <p class="card-text text-secondary-emphasis fs-5">{{ member.role }} </p>
+       
+      </div>
+    </div>
+  </div>
+</div>
