@@ -1,5 +1,4 @@
-/* 
-@import url('https://fonts.googleapis.com/css2?family=Amiri:wght@400;700&display=swap'); */
+ 
 @import url('https://fonts.googleapis.com/css2?family=Aref+Ruqaa:wght@400;700&display=swap');
 .aref-ruqaa-regular {
   font-family: "Aref Ruqaa", serif;
@@ -19,6 +18,7 @@ body {
 :root{
     --primary-color:#003366;
     --secandary-color: #ffe4c4;
+    --section-color:#c9c9c9;
 
 }
 html, body { height: 100%; }

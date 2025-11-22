@@ -1,9 +1,12 @@
+
 .w-25 {
     width: 4rem !important;
 }
 
 .navbar {
     background-color: rgba(180, 180, 187, 0.422);
+         font-family: "Edu NSW ACT Hand Pre", cursive;
+
 }
 
 .btn {

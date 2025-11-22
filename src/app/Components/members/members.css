@@ -1,5 +1,5 @@
  .bg-dark { 
-        background-color:    #F5F6F8 !important;
+        background-color:  var(--section-color) !important;
       
  }
 
