@@ -10,12 +10,10 @@
   <div class="card mb-4" *ngFor="let New of News">
     <div class="row g-0 align-items-center">
 
-      <!-- الصورة -->
       <div class="col-lg-3 col-md-4 col-12 text-center">
         <img [src]="New.image" class="img-fluid rounded-start" alt="news-image">
       </div>
 
-      <!-- النص -->
       <div class="col-lg-9 col-md-8 col-12">
         <div class="p-3">
           <h5 class="card-title mb-3">{{ New.Heading }}</h5>

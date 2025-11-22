@@ -1,0 +1,46 @@
+<div class="bg-dark px-5 py-5">
+    <div class="container ">
+
+        <div class="row px-3 mb-4">
+            <div class="col d-flex">
+                <h3 class="fw-bold">الفاعليات</h3>
+                <a href="" class="ms-auto">عرض الكل</a>
+            </div>
+        </div>
+
+        <div class="card mb-4" *ngFor="let New of News">
+            <div class="row g-0 align-items-center">
+
+                <div class="col-lg-3 col-md-4 col-12 text-center">
+                    <img [src]="New.image" class="img-fluid rounded-start" alt="news-image">
+                </div>
+
+                <div class="col-lg-9 col-md-8 col-12">
+                    <div class="p-3">
+                        <h5 class="card-title mb-3">{{ New.Heading }}</h5>
+
+                        <p class="card-text text-align-justify">
+                            {{ New.Summary }}
+                        </p>
+
+                        <p class="card-text ">
+                            <i class="fa-solid fa-location-dot"> </i>
+                            <small class="text-body-secondary me-5 fs-6"> {{ New.Location }}</small>
+
+                            <i class="fa-regular fa-calendar ms-5 me-1"></i>
+                            <small class="text-body-secondary"> {{ New.Date }}</small>
+                        </p>
+                      <!--   <div class="text-center">
+                            <button type="button"
+                                class="btn btn-primary rounded-4  px-md-5 py-2 px-5 mt-3  text-light border-1  fs-5">أنضم
+                                الينا </button>
+                        </div> -->
+                    </div>
+                </div>
+
+            </div>
+
+        </div>
+
+    </div>
+</div>

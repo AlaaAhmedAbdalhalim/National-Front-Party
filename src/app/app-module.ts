@@ -8,6 +8,7 @@ import { Footer } from './Components/footer/footer';
 import { About } from './Components/home/about';
 import { Members } from './Components/members/members';
 import { News } from './Components/news/news';
+import { Events } from './Components/events/events';
 
 @NgModule({
   declarations: [
@@ -16,7 +17,8 @@ import { News } from './Components/news/news';
     Footer,
     About,
     Members,
-    News
+    News,
+    Events
   ],
   imports: [
     BrowserModule,
