@@ -11,6 +11,7 @@ import { News } from './Components/news/news';
 import { Events } from './Components/events/events';
 import { MainLayout } from './Components/main-layout/main-layout';
 import { Home } from './Components/home/home';
+import { JoinUs } from './Components/join-us/join-us';
 
 @NgModule({
   declarations: [
@@ -22,7 +23,8 @@ import { Home } from './Components/home/home';
     News,
     Events,
     MainLayout,
-    Home
+    Home,
+    JoinUs
   ],
   imports: [
     BrowserModule,

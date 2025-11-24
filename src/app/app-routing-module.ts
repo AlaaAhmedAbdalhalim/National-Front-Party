@@ -6,6 +6,7 @@ import { Home } from './Components/home/home';
 import { Members } from './Components/members/members';
 import { News } from './Components/news/news';
 import { Events } from './Components/events/events';
+import { JoinUs } from './Components/join-us/join-us';
 
 const routes: Routes = [
   { path: '', redirectTo: 'Home', pathMatch: 'full' },
@@ -16,6 +17,7 @@ const routes: Routes = [
       { path: 'Members', component: Members, title: 'الاعضاء' },
       { path: 'News', component: News, title: 'الاخبار' },
       { path: 'Events', component: Events, title: 'الفاعليات' },
+      { path: 'JoinUs', component: JoinUs, title: 'أنضم الينا' },
     ]
   },
   { path: '**', redirectTo: 'الصفحة الرئيسية ' } 
