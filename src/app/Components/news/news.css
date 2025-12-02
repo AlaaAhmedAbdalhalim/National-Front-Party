@@ -25,3 +25,7 @@ a{
          transform: translateY(-8px);
          box-shadow: 0 10px 25px rgba(0, 0, 0, 0.15);
  }
+ .summary {
+  white-space: pre-wrap; /* يحترم السطور الجديدة ويكسر الأسطر تلقائياً */
+  word-wrap: break-word;
+}
