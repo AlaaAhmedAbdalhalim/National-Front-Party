@@ -43,6 +43,12 @@ members = [
     name: 'جمال سنجر',
     role: 'أمين الطاقة  والثروة المعدنية'
   },
+    {
+    image: 'assets/Members/Zainab.jpeg',
+    name: 'زينب البهادى',
+    role: 'عضو هيئة مكتب'
+  
+  },
 ];
 
 }
