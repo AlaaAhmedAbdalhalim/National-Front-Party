@@ -13,6 +13,7 @@ import { MainLayout } from './Components/main-layout/main-layout';
 import { Home } from './Components/home/home';
 import { JoinUs } from './Components/join-us/join-us';
 import { ContactUS } from './Components/contact-us/contact-us';
+import { HttpClientModule } from '@angular/common/http';
 
 @NgModule({
   declarations: [
@@ -31,7 +32,8 @@ import { ContactUS } from './Components/contact-us/contact-us';
   imports: [
     BrowserModule,
     AppRoutingModule,
-    MatIconModule
+    MatIconModule,
+    HttpClientModule
   ],
   providers: [
     provideBrowserGlobalErrorListeners(),

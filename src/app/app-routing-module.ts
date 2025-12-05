@@ -22,7 +22,7 @@ const routes: Routes = [
       { path: 'ContactUs', component: ContactUS, title: 'تواصل معانا ' },
     ]
   },
-  { path: '**', redirectTo: 'الصفحة الرئيسية ' } 
+  { path: '**', redirectTo: 'Home' } 
 ];
 
 

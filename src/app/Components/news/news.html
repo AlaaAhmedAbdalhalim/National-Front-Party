@@ -6,29 +6,26 @@
       <a href="" class="ms-auto">عرض الكل</a>
     </div>
   </div>
-
-  <div class="card mb-4" *ngFor="let New of News">
+ <div class="card mb-4"  *ngFor="let item of newsList">
     <div class="row g-0 align-items-center">
 
       <div class="col-lg-3 col-md-4 col-12 text-center">
-        <img [src]="New.image" class="img-fluid rounded-start" alt="news-image">
+        <img [src]="item.Image" alt="{{ item.Title }}" class="img-fluid rounded-start">
       </div>
 
       <div class="col-lg-9 col-md-8 col-12">
         <div class="p-3">
-          <h5 class="card-title mb-1">{{ New.Heading }}</h5>
+          <h5 class="card-title mb-1">{{ item.Title }}</h5>
 
           <p class="card-text text-align-justify summary">
-            {{ New.Summary }}
+            {{ item.Description }}
           </p>
 
           <p class="card-text">
-            <small class="text-body-secondary mb-0">{{ New.Date }}</small>
-          </p>
+            <small class="text-body-secondary mb-0">{{ item.Date  | date:'yyyy-MM-dd' }}</small>
+          </p> 
         </div>
       </div>
 
     </div>
-  </div>
-
-</div>
+  </div> 

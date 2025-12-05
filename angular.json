@@ -39,14 +39,9 @@
               "src/styles.css"
             ],
             "scripts": [
-                "node_modules/aos/dist/aos.js",
+              "node_modules/aos/dist/aos.js",
               "node_modules/bootstrap/dist/js/bootstrap.bundle.min.js"
-            ],
-            "server": "src/main.server.ts",
-            "outputMode": "server",
-            "ssr": {
-              "entry": "src/server.ts"
-            }
+            ]
           },
           "configurations": {
             "production": {
@@ -108,11 +103,8 @@
         }
       }
     }
-<<<<<<< HEAD
   },
   "cli": {
     "analytics": "275f9fa9-91df-4dc3-8231-a22e1a5205c9"
-=======
->>>>>>> e99805045ef83ccf0cae60a39a0a4d345fd4fd23
   }
 }
