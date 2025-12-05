@@ -19,7 +19,7 @@ export class News {
   }
 
   loadNews() {
-    this.newsService. getLatest3News().subscribe({
+    this.newsService. getNews().subscribe({
       next: (data) => {
         this.newsList = data;
         console.log(this.newsList);

@@ -8,6 +8,7 @@ import { News } from './Components/news/news';
 import { Events } from './Components/events/events';
 import { JoinUs } from './Components/join-us/join-us';
 import { ContactUS } from './Components/contact-us/contact-us';
+import { Admin } from './Components/admin/admin';
 
 const routes: Routes = [
   { path: '', redirectTo: 'Home', pathMatch: 'full' },
@@ -20,9 +21,12 @@ const routes: Routes = [
       { path: 'Events', component: Events, title: 'الفاعليات' },
       { path: 'JoinUs', component: JoinUs, title: 'أنضم الينا' },
       { path: 'ContactUs', component: ContactUS, title: 'تواصل معانا ' },
+      { path: 'Admin', component: Admin, title: 'Admin  ' },
     ]
   },
-  { path: '**', redirectTo: 'Home' } 
+  { path: '**', redirectTo: 'Home' } ,
+
+
 ];
 
 
