@@ -49,22 +49,38 @@ export class Admin {
 
   // إرسال الأخبار
   submitNews() {
-    const formData = new FormData();
-    formData.append('title', this.newsForm.title);
-    formData.append('description', this.newsForm.description);
-    if (this.selectedNewsFile) {
-      formData.append('image', this.selectedNewsFile, this.selectedNewsFile.name);
-    }
+  if (!this.selectedNewsFile) {
+    console.error('يجب اختيار صورة الخبر');
+    return;
+  }
 
-    this.http.post('https://nationalpartybackend-production.up.railway.app/api/news', formData)
-      .subscribe({
-        next: (res) => {
-          console.log('تم إرسال الأخبار', res);
+  // تصغير الصورة وتحويلها Base64
+  this.resizeImage(this.selectedNewsFile, 800, 600)
+    .then(base64 => {
+      const payload = {
+        Title: this.newsForm.title,
+        Description: this.newsForm.description,
+        Image: base64,
+        Date: this.newsForm.date
+      };
+
+      this.http.post(
+        'https://nationalpartybackend-production.up.railway.app/api/news',
+        payload
+      ).subscribe({
+        next: res => {
+          console.log('تم إرسال الخبر  بنجاح', res);
+
+          // مسح الفورم بعد الإرسال
           this.newsForm = { title: '', description: '', image: '', date: '' };
           this.selectedNewsFile = null;
         },
-        error: (err) => console.error('خطأ في إرسال الأخبار', err)
+        error: err => console.error('خطأ في إرسال الخبر', err)
       });
+    })
+    .catch(err => {
+      console.error('خطأ في معالجة الصورة', err);
+    });
   }
 
   // إرسال الأحداث
