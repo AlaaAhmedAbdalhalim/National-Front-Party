@@ -17,6 +17,7 @@ import { HttpClient, HttpClientModule } from '@angular/common/http';
 import { Admin } from './Components/admin/admin';
 import { FormsModule } from '@angular/forms';
 import { AllMembers } from './Components/all-members/all-members';
+import { AllNews } from './Components/all-news/all-news';
 
 @NgModule({
   declarations: [
@@ -31,7 +32,8 @@ import { AllMembers } from './Components/all-members/all-members';
     Home,
     JoinUs,
     ContactUS,
-    AllMembers
+    AllMembers,
+    AllNews
   ],
   imports: [
     BrowserModule,

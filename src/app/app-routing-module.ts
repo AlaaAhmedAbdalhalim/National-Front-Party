@@ -10,6 +10,7 @@ import { JoinUs } from './Components/join-us/join-us';
 import { ContactUS } from './Components/contact-us/contact-us';
 import { Admin } from './Components/admin/admin';
 import { AllMembers } from './Components/all-members/all-members';
+import { AllNews } from './Components/all-news/all-news';
 
 const routes: Routes = [
   { path: '', redirectTo: 'Home', pathMatch: 'full' },
@@ -24,6 +25,7 @@ const routes: Routes = [
       { path: 'ContactUs', component: ContactUS, title: 'تواصل معانا ' },
       { path: 'Admin', component: Admin, title: 'Admin  ' },
       { path: 'AllMembers', component: AllMembers, title: 'كافة الاعضاء   ' },
+      { path: 'AllNews', component: AllNews, title: 'كافة الاخبار   ' },
     ]
   },
   { path: '**', redirectTo: 'Home' } ,

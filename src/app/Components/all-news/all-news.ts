@@ -1,15 +1,13 @@
-import { CommonModule } from '@angular/common';
 import { Component } from '@angular/core';
-import { NewsList ,NewsService } from '../../Services/news-service';
+import { NewsList, NewsService } from '../../Services/news-service';
 
 @Component({
-  selector: 'app-news',
+  selector: 'app-all-news',
   standalone: false,
-  templateUrl: './news.html',
-  styleUrl: './news.css',
+  templateUrl: './all-news.html',
+  styleUrl: './all-news.css'
 })
-export class News {
- 
+export class AllNews {
   newsList: NewsList[] = [];  
 
   constructor(private newsService: NewsService) {}
@@ -19,7 +17,7 @@ export class News {
   }
 
   loadNews() {
-    this.newsService. getLatest3News().subscribe({
+    this.newsService. getNews().subscribe({
       next: (data) => {
         this.newsList = data;
         console.log(this.newsList);
@@ -29,5 +27,4 @@ export class News {
       }
     });
   }
-
 }
