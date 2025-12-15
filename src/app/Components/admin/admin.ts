@@ -14,7 +14,7 @@ export class Admin {
   selectedType: string = 'news'; 
   newsForm = { title: '', description: '', image: '', date: '' };
   eventForm = { title: '', description: '', image: '', date: '', location: '' };
-  memberForm = { name: '', email: '' };
+  memberForm = { Name: '', Position: '' , Image:''};
 
   // نفصل الملفات لكل نوع
   selectedNewsFile: File | null = null;
@@ -158,7 +158,40 @@ submitEvent() {
       console.error('خطأ في معالجة الصورة', err);
     });
 }
+submitMember(){
+  if (!this.selectedMemberFile) {
+    console.error('يجب اختيار صورة العضو');
+    return;
+  }
 
+  // تصغير الصورة وتحويلها Base64
+  this.resizeImage(this.selectedMemberFile, 800, 600)
+    .then(base64 => {
+      const payload = {
+        Name: this.memberForm.Name,
+        Position: this.memberForm.Position,
+        Image: base64,
+       
+      };
+
+      this.http.post(
+        'https://nationalpartybackend-production.up.railway.app/api/members',
+        payload
+      ).subscribe({
+        next: res => {
+          console.log('تم إرسال العضو  بنجاح', res);
+
+          // مسح الفورم بعد الإرسال
+          this.memberForm = { Name: '', Position: '', Image: '' };
+          this.selectedMemberFile = null;
+        },
+        error: err => console.error('خطأ في إرسال العضو', err)
+      });
+    })
+    .catch(err => {
+      console.error('خطأ في معالجة الصورة', err);
+    });
+}
   // تغيير النوع (News / Event / Member)
   onTypeChange(event: Event) {
     const selectElement = event.target as HTMLSelectElement;

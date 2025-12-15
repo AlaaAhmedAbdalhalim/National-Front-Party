@@ -39,17 +39,22 @@
     <input type="text" [(ngModel)]="eventForm.location" name="location" required id="EventLocation" class="form-control mb-5">
     <label for="EventLocation" class="form-label">تاريخ الحدث </label>
     <input type="date" [(ngModel)]="eventForm.date" name="date" required id="EventDate" class="form-control mb-5">
+
     <button type="submit" class="btn btn-success w-25 mx-auto">إرسال</button>
   </form>
 </div>
-<!-- 
+
 <div *ngIf="selectedType === 'members'">
-  <h3>إضافة عضو جديد</h3>
-  <form (ngSubmit)="submitMember()">
-    <input type="text" [(ngModel)]="memberForm.name" name="name" placeholder="اسم العضو" required>
-    <input type="email" [(ngModel)]="memberForm.email" name="email" placeholder="الإيميل" required>
-    <button type="submit">إرسال</button>
+  <h3 class="text-center fw-bold mt-4">إضافة عضو جديد</h3>
+  <form (ngSubmit)="submitMember()" enctype="multipart/form-data" class="d-flex flex-column mx-auto w-75">
+      <label for="MemberName" class="form-label">أسم العضو </label>
+    <input type="text" [(ngModel)]="memberForm.Name" name="name" placeholder="اسم العضو"  class="form-control mb-3" id="MemberName " required>
+          <label for="MemberPosition" class="form-label">لقب العضو </label>
+    <input type="text" [(ngModel)]="memberForm.Position" name="Position" placeholder="اللقب"   class="form-control mb-3" id="MemberPosition" required>
+         <label for="MemberImage" class="form-label">صورة العضو </label>
+    <input type="file" (change)="onMemberFileSelected($event)" accept="image/*" class="form-control mb-3" id="MemberImage" >
+    <button type="submit" class="btn btn-success w-25 mx-auto">إرسال</button>
   </form>
-</div> -->
+</div> 
 
 </div>

@@ -3,10 +3,9 @@ import { Injectable } from '@angular/core';
 import { map, Observable } from 'rxjs';
 
 export interface MembersList {
-  Image:string,
   Name: string;
-  Title: string;
-  
+  Position: string;
+  Image:string
 }
 
 @Injectable({
