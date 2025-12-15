@@ -1,8 +1,8 @@
 import { Component } from '@angular/core';
 import { HttpClient } from '@angular/common/http';
-import { AdminService } from '../../Services/admin-service';
 import { CommonModule } from '@angular/common';
 import { FormsModule } from '@angular/forms';
+import { AdminService } from '../../Services/admin-service';
 
 @Component({
   selector: 'app-admin',
@@ -11,52 +11,113 @@ import { FormsModule } from '@angular/forms';
   imports: [FormsModule, CommonModule]
 })
 export class Admin {
-  selectedType: string = 'news'; 
-  newsForm = { title: '', description: '', image: '', date: '' };
-  eventForm = { title: '', description: '', image: '', date: '', location: '' };
-  memberForm = { Name: '', Position: '' , Image:''};
 
-  // نفصل الملفات لكل نوع
+  selectedType: string = 'news';
+
+  newsForm = {
+    title: '',
+    description: '',
+    image: '',
+    date: ''
+  };
+
+  eventForm = {
+    title: '',
+    description: '',
+    image: '',
+    location: '',
+    date: ''
+  };
+
+  memberForm = {
+    Name: '',
+    Position: '',
+    Image: ''
+  };
+
   selectedNewsFile: File | null = null;
   selectedEventFile: File | null = null;
   selectedMemberFile: File | null = null;
 
-  constructor(private adminService: AdminService, private http: HttpClient) { }
+  sent = false;
 
-  // اختيار الملف للأخبار
+  constructor(
+    private adminService: AdminService,
+    private http: HttpClient
+  ) {}
+
+  /* ================= FILE SELECT ================= */
+
   onNewsFileSelected(event: any) {
-    this.selectedNewsFile = event.target.files[0];
+    this.selectedNewsFile = event.target.files[0] || null;
   }
 
-  // اختيار الملف للأحداث
   onEventsFileSelected(event: any) {
-    const file = event.target.files[0];
-    if (!file) return;
-
-    this.selectedEventFile = file; // ✅ مهم
-
-    const reader = new FileReader();
-    reader.onload = () => {
-      this.eventForm.image = reader.result as string; // Base64
-    };
-    reader.readAsDataURL(file);
+    this.selectedEventFile = event.target.files[0] || null;
   }
 
-  // اختيار الملف للأعضاء
   onMemberFileSelected(event: any) {
-    this.selectedMemberFile = event.target.files[0];
+    this.selectedMemberFile = event.target.files[0] || null;
   }
 
-  // إرسال الأخبار
+  /* ================= IMAGE RESIZE ================= */
+
+  resizeImage(file: File, maxWidth: number, maxHeight: number): Promise<string> {
+    return new Promise((resolve, reject) => {
+      const reader = new FileReader();
+
+      reader.onload = (e: any) => {
+        const img = new Image();
+
+        img.onload = () => {
+          let width = img.width;
+          let height = img.height;
+
+          if (width > maxWidth) {
+            height = height * (maxWidth / width);
+            width = maxWidth;
+          }
+
+          if (height > maxHeight) {
+            width = width * (maxHeight / height);
+            height = maxHeight;
+          }
+
+          const canvas = document.createElement('canvas');
+          canvas.width = width;
+          canvas.height = height;
+
+          const ctx = canvas.getContext('2d');
+          ctx?.drawImage(img, 0, 0, width, height);
+
+          const base64 = canvas.toDataURL('image/jpeg', 0.7);
+          resolve(base64);
+        };
+
+        img.onerror = err => reject(err);
+        img.src = e.target.result;
+      };
+
+      reader.onerror = err => reject(err);
+      reader.readAsDataURL(file);
+    });
+  }
+
+  /* ================= SUCCESS ALERT ================= */
+
+  showSuccess() {
+    this.sent = true;
+    setTimeout(() => {
+      this.sent = false;
+    }, 3000);
+  }
+
+  /* ================= SUBMIT NEWS ================= */
+
   submitNews() {
-  if (!this.selectedNewsFile) {
-    console.error('يجب اختيار صورة الخبر');
-    return;
-  }
+    if (!this.selectedNewsFile) return;
 
-  // تصغير الصورة وتحويلها Base64
-  this.resizeImage(this.selectedNewsFile, 800, 600)
-    .then(base64 => {
+    this.resizeImage(this.selectedNewsFile, 800, 600).then(base64 => {
       const payload = {
         Title: this.newsForm.title,
         Description: this.newsForm.description,
@@ -68,70 +129,22 @@ export class Admin {
         'https://nationalpartybackend-production.up.railway.app/api/news',
         payload
       ).subscribe({
-        next: res => {
-          console.log('تم إرسال الخبر  بنجاح', res);
-
-          // مسح الفورم بعد الإرسال
+        next: () => {
           this.newsForm = { title: '', description: '', image: '', date: '' };
           this.selectedNewsFile = null;
+          this.showSuccess();
         },
-        error: err => console.error('خطأ في إرسال الخبر', err)
+        error: err => console.error(err)
       });
-    })
-    .catch(err => {
-      console.error('خطأ في معالجة الصورة', err);
     });
   }
 
-  // إرسال الأحداث
- // أضف الوظيفة لتصغير الصورة
-resizeImage(file: File, maxWidth: number, maxHeight: number): Promise<string> {
-  return new Promise((resolve, reject) => {
-    const reader = new FileReader();
-    reader.onload = (event: any) => {
-      const img = new Image();
-      img.onload = () => {
-        const canvas = document.createElement('canvas');
-        let width = img.width;
-        let height = img.height;
+  /* ================= SUBMIT EVENT ================= */
 
-        // تعديل الأبعاد حسب الحد الأقصى
-        if (width > maxWidth) {
-          height = height * (maxWidth / width);
-          width = maxWidth;
-        }
-        if (height > maxHeight) {
-          width = width * (maxHeight / height);
-          height = maxHeight;
-        }
+  submitEvent() {
+    if (!this.selectedEventFile) return;
 
-        canvas.width = width;
-        canvas.height = height;
-        const ctx = canvas.getContext('2d');
-        ctx?.drawImage(img, 0, 0, width, height);
-
-        // تحويل للـ Base64 مع ضغط الجودة 0.7
-        const dataUrl = canvas.toDataURL('image/jpeg', 0.7);
-        resolve(dataUrl);
-      };
-      img.onerror = error => reject(error);
-      img.src = event.target.result;
-    };
-    reader.onerror = error => reject(error);
-    reader.readAsDataURL(file);
-  });
-}
-
-// نسخة نهائية من submitEvent()
-submitEvent() {
-  if (!this.selectedEventFile) {
-    console.error('يجب اختيار صورة للحدث');
-    return;
-  }
-
-  // تصغير الصورة وتحويلها Base64
-  this.resizeImage(this.selectedEventFile, 800, 600)
-    .then(base64 => {
+    this.resizeImage(this.selectedEventFile, 800, 600).then(base64 => {
       const payload = {
         Title: this.eventForm.title,
         Description: this.eventForm.description,
@@ -144,57 +157,51 @@ submitEvent() {
         'https://nationalpartybackend-production.up.railway.app/api/events',
         payload
       ).subscribe({
-        next: res => {
-          console.log('تم إرسال الحدث بنجاح', res);
-
-          // مسح الفورم بعد الإرسال
-          this.eventForm = { title: '', description: '', image: '', location: '', date: '' };
+        next: () => {
+          this.eventForm = {
+            title: '',
+            description: '',
+            image: '',
+            location: '',
+            date: ''
+          };
           this.selectedEventFile = null;
+          this.showSuccess();
         },
-        error: err => console.error('خطأ في إرسال الحدث', err)
+        error: err => console.error(err)
       });
-    })
-    .catch(err => {
-      console.error('خطأ في معالجة الصورة', err);
     });
-}
-submitMember(){
-  if (!this.selectedMemberFile) {
-    console.error('يجب اختيار صورة العضو');
-    return;
   }
 
-  // تصغير الصورة وتحويلها Base64
-  this.resizeImage(this.selectedMemberFile, 800, 600)
-    .then(base64 => {
+  /* ================= SUBMIT MEMBER ================= */
+
+  submitMember() {
+    if (!this.selectedMemberFile) return;
+
+    this.resizeImage(this.selectedMemberFile, 800, 600).then(base64 => {
       const payload = {
         Name: this.memberForm.Name,
         Position: this.memberForm.Position,
-        Image: base64,
-       
+        Image: base64
       };
 
       this.http.post(
         'https://nationalpartybackend-production.up.railway.app/api/members',
         payload
       ).subscribe({
-        next: res => {
-          console.log('تم إرسال العضو  بنجاح', res);
-
-          // مسح الفورم بعد الإرسال
+        next: () => {
           this.memberForm = { Name: '', Position: '', Image: '' };
           this.selectedMemberFile = null;
+          this.showSuccess();
         },
-        error: err => console.error('خطأ في إرسال العضو', err)
+        error: err => console.error(err)
       });
-    })
-    .catch(err => {
-      console.error('خطأ في معالجة الصورة', err);
     });
-}
-  // تغيير النوع (News / Event / Member)
+  }
+
+  /* ================= TYPE CHANGE ================= */
+
   onTypeChange(event: Event) {
-    const selectElement = event.target as HTMLSelectElement;
-    this.selectedType = selectElement.value;
+    this.selectedType = (event.target as HTMLSelectElement).value;
   }
 }

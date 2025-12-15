@@ -1,60 +1,172 @@
-<div class="d-flex flex-column justify-content-center align-items-between mt-5 vh-100">
-<h2 class="text-center fw-bold my-4">أضف محتوى جديد</h2>
+<div class="d-flex flex-column justify-content-start align-items-center mt-5 min-vh-100">
 
-<!-- Dropdown لتحديد نوع المحتوى -->
-<select [(ngModel)]="selectedType" (change)="onTypeChange($event)" class="form-select w-50 mx-auto">
-  <option value="news">الأخبار</option>
-  <option value="events">الأحداث</option>
-  <option value="members">الأعضاء</option>
-</select>
+  <h2 class="text-center fw-bold my-4">أضف محتوى جديد</h2>
 
+  <!-- Dropdown لتحديد نوع المحتوى -->
+  <select
+    [(ngModel)]="selectedType"
+    (change)="onTypeChange($event)"
+    class="form-select w-50 mb-4"
+  >
+    <option value="news">الأخبار</option>
+    <option value="events">الأحداث</option>
+    <option value="members">الأعضاء</option>
+  </select>
 
-<!-- الفورم يظهر حسب الاختيار -->
-<div *ngIf="selectedType === 'news'" >
-  <h3 class="text-center fw-bold mt-4">إضافة خبر جديد</h3>
-  <form (ngSubmit)="submitNews()" enctype="multipart/form-data" class="d-flex flex-column mx-auto w-75">
-    <label for="Title" class="form-label">عنوان الخبر </label>
-    <input type="text" [(ngModel)]="newsForm.title" name="title"  required class="form-control mb-3" id="Title">
-    <label for="Description" class="form-label">وصف الخبر </label>
-    <textarea [(ngModel)]="newsForm.description" name="description" id="Description" required class="form-control mb-3" rows="4"></textarea>
-    <label for="Image" class="form-label">صورة الخبر </label>
-    <input type="file" (change)="onNewsFileSelected($event)" accept="image/*" class="form-control mb-3" id="Image" >
-    <label for="Date" class="form-label">تاريخ الخبر </label>
-    <input type="date" [(ngModel)]="newsForm.date" name="date" required id="Date" class="form-control mb-5">
+  <!-- ================= NEWS ================= -->
+  <div *ngIf="selectedType === 'news'" class="w-100">
+    <h3 class="text-center fw-bold mt-3">إضافة خبر جديد</h3>
 
-    <button type="submit" class="btn btn-success w-25 mx-auto">إرسال</button>
-  </form>
-</div>
+    <form
+      (ngSubmit)="submitNews()"
+      class="d-flex flex-column mx-auto w-75"
+    >
+      <label class="form-label">عنوان الخبر</label>
+      <input
+        type="text"
+        [(ngModel)]="newsForm.title"
+        name="newsTitle"
+        required
+        class="form-control mb-3"
+      />
 
-<div *ngIf="selectedType === 'events'">
-  <h3 class="text-center fw-bold mt-4">إضافة حدث جديد</h3>
-  <form (ngSubmit)="submitEvent()"  enctype="multipart/form-data" class="d-flex flex-column mx-auto w-75">
-        <label for="ُEventTitle" class="form-label">عنوان الحدث </label>
-    <input type="text" [(ngModel)]="eventForm.title" name="title" required class="form-control mb-3" id="EventTitle">
-        <label for="EventDescription" class="form-label">وصف الحدث </label>
-    <textarea [(ngModel)]="eventForm.description" name="description"  id="EventDescription" required class="form-control mb-3" rows="4" ></textarea>
-     <label for="EventImage" class="form-label">صورة الحدث </label>
-    <input type="file" (change)="onEventsFileSelected($event)" accept="image/*" class="form-control mb-3" id="EventImage" >
-    <label for="EventDate" class="form-label">مكان الحدث </label>
-    <input type="text" [(ngModel)]="eventForm.location" name="location" required id="EventLocation" class="form-control mb-5">
-    <label for="EventLocation" class="form-label">تاريخ الحدث </label>
-    <input type="date" [(ngModel)]="eventForm.date" name="date" required id="EventDate" class="form-control mb-5">
+      <label class="form-label">وصف الخبر</label>
+      <textarea
+        [(ngModel)]="newsForm.description"
+        name="newsDescription"
+        required
+        class="form-control mb-3"
+        rows="4"
+      ></textarea>
 
-    <button type="submit" class="btn btn-success w-25 mx-auto">إرسال</button>
-  </form>
-</div>
+      <label class="form-label">صورة الخبر</label>
+      <input
+        type="file"
+        (change)="onNewsFileSelected($event)"
+        accept="image/*"
+        class="form-control mb-3"
+      />
 
-<div *ngIf="selectedType === 'members'">
-  <h3 class="text-center fw-bold mt-4">إضافة عضو جديد</h3>
-  <form (ngSubmit)="submitMember()" enctype="multipart/form-data" class="d-flex flex-column mx-auto w-75">
-      <label for="MemberName" class="form-label">أسم العضو </label>
-    <input type="text" [(ngModel)]="memberForm.Name" name="name" placeholder="اسم العضو"  class="form-control mb-3" id="MemberName " required>
-          <label for="MemberPosition" class="form-label">لقب العضو </label>
-    <input type="text" [(ngModel)]="memberForm.Position" name="Position" placeholder="اللقب"   class="form-control mb-3" id="MemberPosition" required>
-         <label for="MemberImage" class="form-label">صورة العضو </label>
-    <input type="file" (change)="onMemberFileSelected($event)" accept="image/*" class="form-control mb-3" id="MemberImage" >
-    <button type="submit" class="btn btn-success w-25 mx-auto">إرسال</button>
-  </form>
-</div> 
+      <label class="form-label">تاريخ الخبر</label>
+      <input
+        type="date"
+        [(ngModel)]="newsForm.date"
+        name="newsDate"
+        required
+        class="form-control mb-4"
+      />
+
+      <button type="submit" class="btn btn-success w-25 mx-auto">
+        إرسال
+      </button>
+    </form>
+  </div>
+
+  <!-- ================= EVENTS ================= -->
+  <div *ngIf="selectedType === 'events'" class="w-100">
+    <h3 class="text-center fw-bold mt-3">إضافة حدث جديد</h3>
+
+    <form
+      (ngSubmit)="submitEvent()"
+      class="d-flex flex-column mx-auto w-75"
+    >
+      <label class="form-label">عنوان الحدث</label>
+      <input
+        type="text"
+        [(ngModel)]="eventForm.title"
+        name="eventTitle"
+        required
+        class="form-control mb-3"
+      />
+
+      <label class="form-label">وصف الحدث</label>
+      <textarea
+        [(ngModel)]="eventForm.description"
+        name="eventDescription"
+        required
+        class="form-control mb-3"
+        rows="4"
+      ></textarea>
+
+      <label class="form-label">صورة الحدث</label>
+      <input
+        type="file"
+        (change)="onEventsFileSelected($event)"
+        accept="image/*"
+        class="form-control mb-3"
+      />
+
+      <label class="form-label">مكان الحدث</label>
+      <input
+        type="text"
+        [(ngModel)]="eventForm.location"
+        name="eventLocation"
+        required
+        class="form-control mb-3"
+      />
+
+      <label class="form-label">تاريخ الحدث</label>
+      <input
+        type="date"
+        [(ngModel)]="eventForm.date"
+        name="eventDate"
+        required
+        class="form-control mb-4"
+      />
+
+      <button type="submit" class="btn btn-success w-25 mx-auto">
+        إرسال
+      </button>
+    </form>
+  </div>
+
+  <!-- ================= MEMBERS ================= -->
+  <div *ngIf="selectedType === 'members'" class="w-100">
+    <h3 class="text-center fw-bold mt-3">إضافة عضو جديد</h3>
+
+    <form
+      (ngSubmit)="submitMember()"
+      class="d-flex flex-column mx-auto w-75"
+    >
+      <label class="form-label">اسم العضو</label>
+      <input
+        type="text"
+        [(ngModel)]="memberForm.Name"
+        name="memberName"
+        required
+        class="form-control mb-3"
+      />
+
+      <label class="form-label">لقب العضو</label>
+      <input
+        type="text"
+        [(ngModel)]="memberForm.Position"
+        name="memberPosition"
+        required
+        class="form-control mb-3"
+      />
+
+      <label class="form-label">صورة العضو</label>
+      <input
+        type="file"
+        (change)="onMemberFileSelected($event)"
+        accept="image/*"
+        class="form-control mb-4"
+      />
+
+      <button type="submit" class="btn btn-success w-25 mx-auto">
+        إرسال
+      </button>
+    </form>
+  </div>
+
+  <!-- ================= SUCCESS MESSAGE ================= -->
+  <div
+    *ngIf="sent"
+    class="alert alert-success mt-4 px-5 w-50 text-center"
+    role="alert"
+  >
+    تم الإرسال بنجاح
+  </div>
 
 </div>
