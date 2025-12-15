@@ -29,15 +29,13 @@ import { FormsModule } from '@angular/forms';
     MainLayout,
     Home,
     JoinUs,
-    ContactUS,
-    Admin
+    ContactUS
   ],
   imports: [
     BrowserModule,
     AppRoutingModule,
     MatIconModule,
     FormsModule,
-
     HttpClientModule
   ],
   providers: [

@@ -12,6 +12,7 @@ export class Events {
 
   eventsList: EventsList[] = [];  
 
+
   constructor(private eventsService: EventsService) {}
 
   ngOnInit(): void {

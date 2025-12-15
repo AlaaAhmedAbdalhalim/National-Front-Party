@@ -1,4 +1,5 @@
 import { Component } from '@angular/core';
+import { MembersList, MembersService } from '../../Services/members-service';
 
 @Component({
   selector: 'app-members',
@@ -7,7 +8,7 @@ import { Component } from '@angular/core';
   styleUrl: './members.css',
 })
 export class Members {
-members = [
+/* members = [
   {
     image: 'assets/Members/AhmedGhareeb.jpeg',
     name: 'أحمد غريب',
@@ -49,6 +50,29 @@ members = [
     role: 'عضو هيئة مكتب'
   
   },
-];
+]; */
+
+  membersList: MembersList[] = [];  
+
+  constructor(private membersService: MembersService) {}
+
+  ngOnInit(): void {
+    this.loadMembers();
+  }
+    encodeImage(image: string): string {
+    return encodeURIComponent(image);
+  }
+
+  loadMembers() {
+    this.membersService. getMembers().subscribe({
+      next: (data) => {
+        this.membersList = data;
+        console.log(this.membersList);
+      },
+      error: (err) => {
+        console.error('Error loading Mebers', err);
+      }
+    });
+  }
 
 }

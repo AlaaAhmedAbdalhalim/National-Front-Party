@@ -18,7 +18,7 @@
     <label for="Description" class="form-label">وصف الخبر </label>
     <textarea [(ngModel)]="newsForm.description" name="description" id="Description" required class="form-control mb-3" rows="4"></textarea>
     <label for="Image" class="form-label">صورة الخبر </label>
-    <input type="file" (change)="onFileSelected($event)" accept="image/*" class="form-control mb-3" id="Image" >
+    <input type="file" (change)="onNewsFileSelected($event)" accept="image/*" class="form-control mb-3" id="Image" >
     <label for="Date" class="form-label">تاريخ الخبر </label>
     <input type="date" [(ngModel)]="newsForm.date" name="date" required id="Date" class="form-control mb-5">
 
@@ -34,7 +34,7 @@
         <label for="EventDescription" class="form-label">وصف الحدث </label>
     <textarea [(ngModel)]="eventForm.description" name="description"  id="EventDescription" required class="form-control mb-3" rows="4" ></textarea>
      <label for="EventImage" class="form-label">صورة الحدث </label>
-    <input type="file" (change)="onFileSelected($event)" accept="image/*" class="form-control mb-3" id="EventImage" >
+    <input type="file" (change)="onEventsFileSelected($event)" accept="image/*" class="form-control mb-3" id="EventImage" >
     <label for="EventDate" class="form-label">مكان الحدث </label>
     <input type="text" [(ngModel)]="eventForm.location" name="location" required id="EventLocation" class="form-control mb-5">
     <label for="EventLocation" class="form-label">تاريخ الحدث </label>

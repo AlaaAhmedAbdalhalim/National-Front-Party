@@ -13,7 +13,7 @@ export interface EventsList {
 })
 export class EventsService {
   
-  private apiUrl = 'http://localhost:3000/api/eventsRoutes';
+private apiUrl = 'https://nationalpartybackend-production.up.railway.app/api/events';
 
   constructor(private http: HttpClient) { }
 

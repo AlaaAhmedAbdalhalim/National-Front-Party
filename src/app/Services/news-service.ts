@@ -15,7 +15,7 @@ export interface NewsList {
 
 export class NewsService {
 
-  private apiUrl = 'http://localhost:3000/api/newsRoutes';
+private apiUrl = 'https://nationalpartybackend-production.up.railway.app/api/news';
 
   constructor(private http: HttpClient) { }
 
