@@ -64,7 +64,7 @@ export class Members {
   }
 
   loadMembers() {
-    this.membersService. getMembers().subscribe({
+    this.membersService. getLastest6Members().subscribe({
       next: (data) => {
         this.membersList = data;
         console.log(this.membersList);

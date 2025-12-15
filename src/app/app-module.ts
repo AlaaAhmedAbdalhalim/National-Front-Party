@@ -16,6 +16,7 @@ import { ContactUS } from './Components/contact-us/contact-us';
 import { HttpClient, HttpClientModule } from '@angular/common/http';
 import { Admin } from './Components/admin/admin';
 import { FormsModule } from '@angular/forms';
+import { AllMembers } from './Components/all-members/all-members';
 
 @NgModule({
   declarations: [
@@ -29,7 +30,8 @@ import { FormsModule } from '@angular/forms';
     MainLayout,
     Home,
     JoinUs,
-    ContactUS
+    ContactUS,
+    AllMembers
   ],
   imports: [
     BrowserModule,
