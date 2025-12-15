@@ -11,6 +11,7 @@ import { ContactUS } from './Components/contact-us/contact-us';
 import { Admin } from './Components/admin/admin';
 import { AllMembers } from './Components/all-members/all-members';
 import { AllNews } from './Components/all-news/all-news';
+import { AllEvents } from './Components/all-events/all-events';
 
 const routes: Routes = [
   { path: '', redirectTo: 'Home', pathMatch: 'full' },
@@ -26,6 +27,7 @@ const routes: Routes = [
       { path: 'Admin', component: Admin, title: 'Admin  ' },
       { path: 'AllMembers', component: AllMembers, title: 'كافة الاعضاء   ' },
       { path: 'AllNews', component: AllNews, title: 'كافة الاخبار   ' },
+      { path: 'AllEvents', component: AllEvents, title: 'كافة الفاعليات   ' },
     ]
   },
   { path: '**', redirectTo: 'Home' } ,

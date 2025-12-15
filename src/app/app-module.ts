@@ -18,6 +18,7 @@ import { Admin } from './Components/admin/admin';
 import { FormsModule } from '@angular/forms';
 import { AllMembers } from './Components/all-members/all-members';
 import { AllNews } from './Components/all-news/all-news';
+import { AllEvents } from './Components/all-events/all-events';
 
 @NgModule({
   declarations: [
@@ -33,7 +34,8 @@ import { AllNews } from './Components/all-news/all-news';
     JoinUs,
     ContactUS,
     AllMembers,
-    AllNews
+    AllNews,
+    AllEvents
   ],
   imports: [
     BrowserModule,

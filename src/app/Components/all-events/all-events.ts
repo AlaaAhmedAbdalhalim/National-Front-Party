@@ -2,14 +2,12 @@ import { Component } from '@angular/core';
 import { EventsList, EventsService } from '../../Services/events-service';
 
 @Component({
-  selector: 'app-events',
+  selector: 'app-all-events',
   standalone: false,
-  templateUrl: './events.html',
-  styleUrl: './events.css',
+  templateUrl: './all-events.html',
+  styleUrl: './all-events.css'
 })
-export class Events {
-
-
+export class AllEvents {
   eventsList: EventsList[] = [];  
 
 
@@ -20,7 +18,7 @@ export class Events {
   }
 
   loadEvents() {
-    this.eventsService. getLatest3Events().subscribe({
+    this.eventsService. getEvents().subscribe({
       next: (data) => {
         this.eventsList = data;
         console.log(this.eventsList);
@@ -30,5 +28,4 @@ export class Events {
       }
     });
   }
-
 }

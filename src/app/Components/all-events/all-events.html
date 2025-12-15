@@ -1,0 +1,30 @@
+<div class="card mb-4" *ngFor="let item of eventsList">
+    <div class="row g-0 align-items-center">
+
+        <div class="col-lg-3 col-md-4 col-12 text-center">
+            <img [src]="item.Image" alt="{{ item.Title }}" class="img-fluid rounded-start">
+
+        </div>
+
+        <div class="col-lg-9 col-md-8 col-12">
+            <div class="p-3">
+                <h5 class="card-title mb-3">{{ item.Title }}</h5>
+
+                <p class="card-text text-align-justify">
+                    {{ item.Description }}
+                </p>
+
+                <p class="card-text ">
+                    <i class="fa-solid fa-location-dot"> </i>
+                    <small class="text-body-secondary me-5 fs-6"> {{ item.Location }}</small>
+
+                    <i class="fa-regular fa-calendar ms-5 me-1"></i>
+                    <small class="text-body-secondary"> {{ item.Date | date:'yyyy-MM-dd'}}</small>
+                </p>
+
+            </div>
+        </div>
+
+    </div>
+
+</div>
