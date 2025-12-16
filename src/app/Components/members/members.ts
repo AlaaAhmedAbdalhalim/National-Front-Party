@@ -8,36 +8,7 @@ import { MembersList, MembersService } from '../../Services/members-service';
   styleUrl: './members.css',
 })
 export class Members {
-/* members = [
- 
-    image: 'assets/Members/MomenSamuel.jpeg',
-    name: 'مؤمن صموئيل',
-    role: 'عضو هيئة مكتب'
-  },
-  {
-    image: 'assets/Members/Mamdouh.jpeg',
-    name: 'محمد ممدوح',
-    role: 'عضو هيئة مكتب'
-  },
-  {
-    image: 'assets/Members/Salah.jpeg',
-    name: 'صلاح عثمان',
-    role: 'عضو هيئة مكتب'
-  },
-   {
-    image: 'assets/Members/Sanjar.jpeg',
-    name: 'جمال سنجر',
-    role: 'أمين الطاقة  والثروة المعدنية'
-  },
-    {
-    image: 'assets/Members/Zainab.jpeg',
-    name: 'زينب البهادى',
-    role: 'عضو هيئة مكتب'
-  
-  },
-]; */
-
-  membersList: MembersList[] = [];  
+ membersList: MembersList[] = [];  
 
   constructor(private membersService: MembersService) {}
 
