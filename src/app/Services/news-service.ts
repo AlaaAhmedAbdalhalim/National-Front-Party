@@ -21,8 +21,16 @@ private apiUrl = 'https://nationalpartybackend-production.up.railway.app/api/new
 
   // جلب كل الأخبار
   getNews(): Observable<NewsList[]> {
-    return this.http.get<NewsList[]>(this.apiUrl);
-  }
+  return this.http.get<NewsList[]>(this.apiUrl).pipe(
+    map(news =>
+      news.sort(
+        (a, b) =>
+          new Date(b.Date).getTime() -
+          new Date(a.Date).getTime()
+      )
+    )
+  );
+}
 
   // إضافة خبر جديد
   addNews(news: NewsList): Observable<any> {
