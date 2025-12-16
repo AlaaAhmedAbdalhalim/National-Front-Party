@@ -37,9 +37,15 @@ private apiUrl = 'https://nationalpartybackend-production.up.railway.app/api/new
     return this.http.post(this.apiUrl, news);
   }
  // جلب احدث 3 اخبار
-   getLatest3News(): Observable<NewsList[]> {
-    return this.getNews().pipe(
-      map(news => news.slice().reverse().slice(0, 3))  // أول 3 أخبار
-    );
-  }
+  getLatest3News(): Observable<NewsList[]> {
+  return this.getNews().pipe(
+    map(news => 
+      news
+        .slice() // نسخ المصفوفة عشان ما نغيرش الأصل
+        .sort((a, b) => new Date(b.Date).getTime() - new Date(a.Date).getTime()) // ترتيب من الأحدث للأقدم
+        .slice(0, 3) // أول 3 أخبار
+    )
+  );
+}
+
 }
