@@ -9,22 +9,7 @@ import { MembersList, MembersService } from '../../Services/members-service';
 })
 export class Members {
 /* members = [
-  {
-    image: 'assets/Members/AhmedGhareeb.jpeg',
-    name: 'أحمد غريب',
-    role: 'رئيس الحزب'
-  },
-  {
-    image: 'assets/Members/Hassan.jpeg',
-    name: 'القبطان حسان',
-    role: 'أمين التنظيم'
-  },
-  {
-    image: 'assets/Members/MariamMohamed.jpeg',
-    name: 'مريم محمد',
-    role: 'عضو هيئة مكتب'
-  },
-  {
+ 
     image: 'assets/Members/MomenSamuel.jpeg',
     name: 'مؤمن صموئيل',
     role: 'عضو هيئة مكتب'
@@ -64,7 +49,7 @@ export class Members {
   }
 
   loadMembers() {
-    this.membersService. getLastest6Members().subscribe({
+    this.membersService. getMembers().subscribe({
       next: (data) => {
         this.membersList = data;
         console.log(this.membersList);
