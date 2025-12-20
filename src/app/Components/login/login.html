@@ -1,0 +1,16 @@
+<div class="d-flex flex-column justify-content-start align-items-center mt-5 min-vh-100">
+
+        <h2 class="text-center fw-bold my-4">تسجيل الدخول </h2>
+        <div class="mb-3">
+            <label class="form-label">البريد الالكترونى </label>
+            <input type="email" class="form-control w-100" [(ngModel)]="email" name="email">
+        </div>
+        <div class="mb-3">
+            <label class="form-label">كلمة السر </label>
+            <input type="password" class="form-control" [(ngModel)]="password" name="password">
+        </div>
+
+        <button (click)="login()">Login</button>
+        <p class="text-danger">{{ errorMessage }}</p>
+
+</div>

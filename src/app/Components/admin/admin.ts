@@ -3,6 +3,8 @@ import { HttpClient } from '@angular/common/http';
 import { CommonModule } from '@angular/common';
 import { FormsModule } from '@angular/forms';
 import { AdminService } from '../../Services/admin-service';
+import { AuthService } from '../../Services/auth-service';
+import { Router } from '@angular/router';
 
 @Component({
   selector: 'app-admin',
@@ -43,8 +45,15 @@ export class Admin {
 
   constructor(
     private adminService: AdminService,
-    private http: HttpClient
-  ) {}
+    private http: HttpClient,
+    private authService: AuthService,
+    private router: Router
+  ) {}/* 
+ngOnInit() {
+  if (!this.authService.isAdmin()) {
+    this.router.navigate(['/']);
+  }
+} */
 
   /* ================= FILE SELECT ================= */
 

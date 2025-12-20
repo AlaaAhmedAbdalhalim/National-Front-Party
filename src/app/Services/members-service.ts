@@ -3,6 +3,7 @@ import { Injectable } from '@angular/core';
 import { map, Observable } from 'rxjs';
 
 export interface MembersList {
+  id: number;
   Name: string;
   Position: string;
   Image:string
@@ -32,4 +33,13 @@ private apiUrl = 'https://nationalpartybackend-production.up.railway.app/api/mem
       map(members => members.slice().reverse().slice(0, 6))  // أول 3 أخبار
     );
   }
+  
+  deleteMember(id: number) {
+    return this.http.delete(`${this.apiUrl}/${id}`);
+  }
+
+  editMember(member: any) {
+    return this.http.put(`${this.apiUrl}/${member.id}`, member);
+  }
+  
 }

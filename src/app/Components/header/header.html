@@ -28,7 +28,8 @@
                 <a class="nav-link text-white-50" routerLink='AllEvents'> الفاعليات </a>
             </li>
         </ul>
-        <button type="button" class="btn btn-primary rounded-pill me-3 px-5 py-3 text-light border-0 " routerLink="ContactUs">تواصل معنا</button>
+        <button type="button"  *ngIf="!authService.isAdmin()" class="btn btn-primary rounded-pill me-3 px-5 py-3 text-light border-0 " routerLink="ContactUs">تواصل معنا</button>
+        <button type="button"  *ngIf="authService.isAdmin()" class="btn btn-primary rounded-pill me-3 px-5 py-3 text-light border-0 " (click)="logout()">تسجيل الخروج </button>
 
     </div>
    

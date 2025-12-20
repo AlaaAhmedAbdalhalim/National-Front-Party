@@ -1,22 +1,65 @@
 <section class="py-5 text-center bg-dark">
-   <div class="w-100 d-flex  px-6 pt-5 mt-2">
-         <h2 class="fw-bold mb-2 icon">أعضاؤنا</h2>
-        <a href="" class="ms-auto" routerLink="/AllMembers">عرض الكل </a>
-    </div>
- 
+  <div class="w-100 d-flex px-6 pt-5 mt-2">
+    <h2 class="fw-bold mb-2 icon">أعضاؤنا</h2>
+    <a href="" class="ms-auto" routerLink="/AllMembers">عرض الكل</a>
+  </div>
 
   <div class="row g-4 mx-3 mx-md-5">
     <div class="col-12 col-sm-6 col-md-4 col-lg-3 p-4" *ngFor="let member of membersList">
-      <div class="card text-bg-dark border-0 ">
-        <img [src]="member.Image" alt="{{ member.Image }}" class="img-fluid rounded-start">
-        <div class="card-img-overlay d-flex flex-column justify-content-end overlay-box p-3 m-lg-4 m-3">
-        <h5 class="card-title fw-bold fs-5 fs-lg-4">
-  {{ member.Name }}
-</h5>
+      <div class="card text-bg-dark border-0">
+        <img [src]="member.Image" alt="{{ member.Name }}" class="img-fluid rounded-start">
 
+        <div class="card-img-overlay d-flex flex-column justify-content-end overlay-box p-3 m-lg-4 m-3">
+          <h5 class="card-title fw-bold fs-5 fs-lg-4">{{ member.Name }}</h5>
           <p class="card-text fs-6 text-dark">{{ member.Position }}</p>
         </div>
       </div>
+
+      <div class="mt-2 d-flex justify-content-between">
+        <button *ngIf="isAdmin" class="btn btn-sm btn-primary" (click)="editMember(member)">
+          Edit
+        </button>
+
+        <button *ngIf="isAdmin" class="btn btn-sm btn-danger" (click)="deleteMember(member.id)">
+          Delete
+        </button>
+      </div>
+    </div>
+  </div>
+
+  <!-- EDIT MODAL -->
+  <div class="modal-backdrop" *ngIf="showEditModal">
+    <div class="modal-box p-4">
+
+      <h3 class="mb-3">Edit Member</h3>
+
+      <div *ngIf="selectedMember">
+        <div class="mb-3">
+          <label class="form-label">Name</label>
+          <input type="text" class="form-control" [(ngModel)]="selectedMember.Name" />
+        </div>
+
+        <div class="mb-3">
+          <label class="form-label">Position</label>
+          <input type="text" class="form-control" [(ngModel)]="selectedMember.Position" />
+        </div>
+
+        <div class="mb-3">
+          <label class="form-label">Image</label>
+          <input type="file" class="form-control" (change)="onImageChange($event)" />
+        </div>
+
+        <!-- Preview -->
+        <div class="mb-3" *ngIf="selectedMember.Image">
+          <img [src]="selectedMember.Image" width="120" style="margin-top:10px; border-radius:8px" />
+        </div>
+
+        <div class="d-flex justify-content-end gap-2">
+          <button class="btn btn-success" (click)="updateMember()">Save</button>
+          <button class="btn btn-secondary" (click)="closeModal()">Cancel</button>
+        </div>
+      </div>
+
     </div>
   </div>
 </section>

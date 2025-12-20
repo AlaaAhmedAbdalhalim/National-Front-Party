@@ -12,6 +12,8 @@ import { Admin } from './Components/admin/admin';
 import { AllMembers } from './Components/all-members/all-members';
 import { AllNews } from './Components/all-news/all-news';
 import { AllEvents } from './Components/all-events/all-events';
+import { Login } from './Components/login/login';
+import { AdminGuard } from './Guards/admin.guard';
 
 const routes: Routes = [
   { path: '', redirectTo: 'Home', pathMatch: 'full' },
@@ -24,13 +26,16 @@ const routes: Routes = [
       { path: 'Events', component: Events, title: 'الفاعليات' },
       { path: 'JoinUs', component: JoinUs, title: 'أنضم الينا' },
       { path: 'ContactUs', component: ContactUS, title: 'تواصل معانا ' },
-      { path: 'Admin', component: Admin, title: 'Admin  ' },
+      { path: 'Admin', component: Admin, title: 'Admin  ' ,canActivate: [AdminGuard] },
       { path: 'AllMembers', component: AllMembers, title: 'كافة الاعضاء   ' },
       { path: 'AllNews', component: AllNews, title: 'كافة الاخبار   ' },
       { path: 'AllEvents', component: AllEvents, title: 'كافة الفاعليات   ' },
+      { path: 'Login', component: Login, title: ' تسجيل الدخول ' }
+      /*       { path: 'admin', component: AdminDashboardComponent, canActivate: [AdminGuard] }
+       */
     ]
   },
-  { path: '**', redirectTo: 'Home' } ,
+  { path: '**', redirectTo: 'Home' },
 
 
 ];

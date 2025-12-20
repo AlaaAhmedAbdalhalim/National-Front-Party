@@ -13,12 +13,14 @@ import { MainLayout } from './Components/main-layout/main-layout';
 import { Home } from './Components/home/home';
 import { JoinUs } from './Components/join-us/join-us';
 import { ContactUS } from './Components/contact-us/contact-us';
-import { HttpClient, HttpClientModule } from '@angular/common/http';
+import { HTTP_INTERCEPTORS, HttpClient, HttpClientModule } from '@angular/common/http';
 import { Admin } from './Components/admin/admin';
 import { FormsModule } from '@angular/forms';
 import { AllMembers } from './Components/all-members/all-members';
 import { AllNews } from './Components/all-news/all-news';
 import { AllEvents } from './Components/all-events/all-events';
+import { AuthInterceptor } from './auth.interceptor';
+import { Login } from './Components/login/login';
 
 @NgModule({
   declarations: [
@@ -35,7 +37,8 @@ import { AllEvents } from './Components/all-events/all-events';
     ContactUS,
     AllMembers,
     AllNews,
-    AllEvents
+    AllEvents,
+    Login
   ],
   imports: [
     BrowserModule,
@@ -44,10 +47,16 @@ import { AllEvents } from './Components/all-events/all-events';
     FormsModule,
     HttpClientModule
   ],
-  providers: [
-    provideBrowserGlobalErrorListeners(),
-    provideClientHydration(withEventReplay())
-  ],
+providers: [
+  provideBrowserGlobalErrorListeners(),
+  provideClientHydration(withEventReplay()),
+
+  {
+    provide: HTTP_INTERCEPTORS,
+    useClass: AuthInterceptor,
+    multi: true
+  }
+],
   bootstrap: [App]
 })
 export class AppModule { }
