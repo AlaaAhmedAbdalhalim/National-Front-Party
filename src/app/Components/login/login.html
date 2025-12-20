@@ -1,4 +1,4 @@
-<div class="d-flex flex-column justify-content-start align-items-center mt-5 min-vh-100">
+<div class="d-flex flex-column justify-content-start align-items-center mt-5 pt-5 min-vh-100">
 
         <h2 class="text-center fw-bold my-4">تسجيل الدخول </h2>
         <div class="mb-3">
@@ -10,7 +10,7 @@
             <input type="password" class="form-control" [(ngModel)]="password" name="password">
         </div>
 
-        <button (click)="login()">Login</button>
+        <button (click)="login()" class="btn btn-primary">Login</button>
         <p class="text-danger">{{ errorMessage }}</p>
 
 </div>
