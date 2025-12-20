@@ -40,7 +40,7 @@ const token = this.authService.getToken();
   }
 
   loadMembers() {
-    this.membersService.getMembers().subscribe({
+    this.membersService.getLastest8Members().subscribe({
       next: (data) => {
         this.membersList = data;
       },

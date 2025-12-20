@@ -27,10 +27,10 @@ private apiUrl = 'https://nationalpartybackend-production.up.railway.app/api/mem
   addMembers(members: MembersList): Observable<any> {
     return this.http.post(this.apiUrl, members);
   }
- // جلب احدث 3 اخبار
-  getLastest6Members(): Observable<MembersList[]> {
+
+  getLastest8Members(): Observable<MembersList[]> {
     return this.getMembers().pipe(
-      map(members => members.slice().reverse().slice(0, 6))  // أول 3 أخبار
+      map(members => members.slice().reverse().slice(0, 8))  // أول 3 أخبار
     );
   }
   
