@@ -12,5 +12,18 @@
           <p class="card-text fs-6 text-dark">{{ member.Position }}</p>
         </div>
       </div>
+        <div class="mt-2 d-flex justify-content-between">
+   <button *ngIf="isAdmin"
+        class="btn btn-sm btn-primary"
+        [routerLink]="['/EditMember', member.id]">
+  Edit
+</button>
+
+
+        <button *ngIf="isAdmin" class="btn btn-sm btn-danger" (click)="deleteMember(member.id)">
+          Delete
+        </button>
+      </div>
     </div>
+    
   </div>
