@@ -1,8 +1,9 @@
 import { Injectable } from '@angular/core';
-import { HttpClient } from '@angular/common/http';
+import { HttpClient, HttpHeaders } from '@angular/common/http';
 import { map, Observable } from 'rxjs';
 
 export interface NewsList {
+  id: number;
   Title: string;
   Description: string;
   Image: string;
@@ -48,4 +49,19 @@ private apiUrl = 'https://nationalpartybackend-production.up.railway.app/api/new
   );
 }
 
+  editNews(news: NewsList) {
+    const token = localStorage.getItem('token');
+
+    const headers = new HttpHeaders({
+      Authorization: `Bearer ${token}`
+    });
+  return this.http.put(
+    `${this.apiUrl}/${news.id}`,
+    news,
+    { headers }
+  );
+}
+ deleteNews(id: number) {
+    return this.http.delete(`${this.apiUrl}/${id}`);
+  }
 }

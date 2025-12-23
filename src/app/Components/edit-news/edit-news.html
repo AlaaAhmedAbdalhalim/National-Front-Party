@@ -1,0 +1,30 @@
+<section class="container py-5">
+  <h2 class="mb-4">تعديل الخير</h2>
+
+  <div *ngIf="new">
+    <div class="mb-3">
+      <label>العنوان</label>
+      <input class="form-control" [(ngModel)]="new.Title">
+    </div>
+
+    <div class="mb-3">
+      <label>التاريخ</label>
+      <input class="form-control" [(ngModel)]="new.Date"  >
+    </div>
+    <div class="mb-3">
+      <label>الوصف</label>
+      <textarea class="form-control" rows="5" [(ngModel)]="new.Description"></textarea>
+    <div class="mb-3">
+      <label>الصورة</label>
+      <input type="file" class="form-control" (change)="onImageChange($event)">
+    </div>
+
+    <img *ngIf="new.Image" [src]="new.Image" width="150" class="mb-3">
+
+    <div class="d-flex gap-2">
+      <button class="btn btn-success" (click)="updateNews()">Save</button>
+      <button class="btn btn-secondary" routerLink="/news">Cancel</button>
+    </div>
+  </div>
+  </div>
+</section>

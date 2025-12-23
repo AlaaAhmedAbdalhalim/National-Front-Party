@@ -23,6 +23,7 @@ import { AuthInterceptor } from './auth.interceptor';
 import { Login } from './Components/login/login';
 import { EditMember } from './Components/edit-member/edit-member';
 import { EditEvents } from './Components/edit-events/edit-events';
+import { EditNews } from './Components/edit-news/edit-news';
 
 @NgModule({
   declarations: [
@@ -42,7 +43,8 @@ import { EditEvents } from './Components/edit-events/edit-events';
     AllEvents,
     Login,
     EditMember,
-    EditEvents
+    EditEvents,
+    EditNews
   ],
   imports: [
     BrowserModule,
