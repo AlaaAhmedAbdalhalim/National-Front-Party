@@ -1,0 +1,27 @@
+<section class="container py-5">
+  <h2 class="mb-4">Edit Member</h2>
+
+  <div *ngIf="member">
+    <div class="mb-3">
+      <label>الاسم</label>
+      <input class="form-control" [(ngModel)]="member.Name">
+    </div>
+
+    <div class="mb-3">
+      <label>المنصب</label>
+      <input class="form-control" [(ngModel)]="member.Position">
+    </div>
+
+    <div class="mb-3">
+      <label>الصورة</label>
+      <input type="file" class="form-control" (change)="onImageChange($event)">
+    </div>
+
+    <img *ngIf="member.Image" [src]="member.Image" width="150" class="mb-3">
+
+    <div class="d-flex gap-2">
+      <button class="btn btn-success" (click)="updateMember()">Save</button>
+      <button class="btn btn-secondary" routerLink="/members">Cancel</button>
+    </div>
+  </div>
+</section>

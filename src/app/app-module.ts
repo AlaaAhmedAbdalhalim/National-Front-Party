@@ -21,6 +21,7 @@ import { AllNews } from './Components/all-news/all-news';
 import { AllEvents } from './Components/all-events/all-events';
 import { AuthInterceptor } from './auth.interceptor';
 import { Login } from './Components/login/login';
+import { EditMember } from './Components/edit-member/edit-member';
 
 @NgModule({
   declarations: [
@@ -38,7 +39,8 @@ import { Login } from './Components/login/login';
     AllMembers,
     AllNews,
     AllEvents,
-    Login
+    Login,
+    EditMember
   ],
   imports: [
     BrowserModule,

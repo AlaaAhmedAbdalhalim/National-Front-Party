@@ -1,4 +1,4 @@
-import { HttpClient } from '@angular/common/http';
+import { HttpClient, HttpHeaders } from '@angular/common/http';
 import { Injectable } from '@angular/core';
 import { map, Observable } from 'rxjs';
 
@@ -38,8 +38,18 @@ private apiUrl = 'https://nationalpartybackend-production.up.railway.app/api/mem
     return this.http.delete(`${this.apiUrl}/${id}`);
   }
 
-  editMember(member: any) {
-    return this.http.put(`${this.apiUrl}/${member.id}`, member);
-  }
-  
+editMember(member: MembersList) {
+  const token = localStorage.getItem('token');
+
+  const headers = new HttpHeaders({
+    Authorization: `Bearer ${token}`
+  });
+
+  return this.http.put(
+    `${this.apiUrl}/${member.id}`,
+    member,
+    { headers }
+  );
+}
+
 }

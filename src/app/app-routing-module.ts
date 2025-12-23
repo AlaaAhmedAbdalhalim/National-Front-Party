@@ -14,6 +14,7 @@ import { AllNews } from './Components/all-news/all-news';
 import { AllEvents } from './Components/all-events/all-events';
 import { Login } from './Components/login/login';
 import { AdminGuard } from './Guards/admin.guard';
+import { EditMember } from './Components/edit-member/edit-member';
 
 const routes: Routes = [
   { path: '', redirectTo: 'Home', pathMatch: 'full' },
@@ -30,7 +31,8 @@ const routes: Routes = [
       { path: 'AllMembers', component: AllMembers, title: 'كافة الاعضاء   ' },
       { path: 'AllNews', component: AllNews, title: 'كافة الاخبار   ' },
       { path: 'AllEvents', component: AllEvents, title: 'كافة الفاعليات   ' },
-      { path: 'Login', component: Login, title: ' تسجيل الدخول ' }
+      { path: 'Login', component: Login, title: ' تسجيل الدخول ' },
+      { path: 'EditMember/:id', component: EditMember, title: 'تعديل عضو' }
       /*       { path: 'admin', component: AdminDashboardComponent, canActivate: [AdminGuard] }
        */
     ]

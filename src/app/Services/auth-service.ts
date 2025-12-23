@@ -17,9 +17,16 @@ export class AuthService {
 
   constructor(private http: HttpClient) {}
 
-  login(email: string, password: string): Observable<any> {
-    return this.http.post<any>(`${this.apiUrl}/login`, { email, password });
-  }
+  login(email: string, password: string) {
+  return this.http.post<any>(this.apiUrl + '/login', { email, password })
+    .pipe(
+      tap(response => {
+        // خزني التوكن في localStorage
+        localStorage.setItem('token', response.token);
+      })
+    );
+}
+
 
   saveAuthData(token: string, role: string) {
     sessionStorage.setItem('token', token);
