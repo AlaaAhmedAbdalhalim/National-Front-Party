@@ -1,0 +1,35 @@
+<section class="container py-5">
+  <h2 class="mb-4">تعديل الحدث</h2>
+
+  <div *ngIf="event">
+    <div class="mb-3">
+      <label>العنوان</label>
+      <input class="form-control" [(ngModel)]="event.Title">
+    </div>
+
+    <div class="mb-3">
+      <label>المكان</label>
+      <input class="form-control" [(ngModel)]="event.Location">
+    </div>
+    <div class="mb-3">
+      <label>التاريخ</label>
+      <input class="form-control" [(ngModel)]="event.Date"  >
+    </div>
+    <div class="mb-3">
+      <label>الوصف</label>
+      <textarea class="form-control" rows="5" [(ngModel)]="event.Description"></textarea>
+
+    <div class="mb-3">
+      <label>الصورة</label>
+      <input type="file" class="form-control" (change)="onImageChange($event)">
+    </div>
+
+    <img *ngIf="event.Image" [src]="event.Image" width="150" class="mb-3">
+
+    <div class="d-flex gap-2">
+      <button class="btn btn-success" (click)="updateEvent()">Save</button>
+      <button class="btn btn-secondary" routerLink="/events">Cancel</button>
+    </div>
+  </div>
+  </div>
+</section>

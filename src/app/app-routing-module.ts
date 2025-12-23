@@ -15,6 +15,7 @@ import { AllEvents } from './Components/all-events/all-events';
 import { Login } from './Components/login/login';
 import { AdminGuard } from './Guards/admin.guard';
 import { EditMember } from './Components/edit-member/edit-member';
+import { EditEvents } from './Components/edit-events/edit-events';
 
 const routes: Routes = [
   { path: '', redirectTo: 'Home', pathMatch: 'full' },
@@ -32,7 +33,8 @@ const routes: Routes = [
       { path: 'AllNews', component: AllNews, title: 'كافة الاخبار   ' },
       { path: 'AllEvents', component: AllEvents, title: 'كافة الفاعليات   ' },
       { path: 'Login', component: Login, title: ' تسجيل الدخول ' },
-      { path: 'EditMember/:id', component: EditMember, title: 'تعديل عضو' }
+      { path: 'EditMember/:id', component: EditMember, title: 'تعديل عضو' },
+      { path: 'EditEvent/:id', component: EditEvents, title: 'تعديل فعالية' }
       /*       { path: 'admin', component: AdminDashboardComponent, canActivate: [AdminGuard] }
        */
     ]

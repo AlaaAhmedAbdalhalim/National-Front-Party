@@ -1,12 +1,13 @@
-import { HttpClient } from '@angular/common/http';
+import { HttpClient, HttpHeaders } from '@angular/common/http';
 import { Injectable } from '@angular/core';
 import { map, Observable } from 'rxjs';
 export interface EventsList {
+  id: number;
   Title: string;
   Description: string;
   Image: string;
   Location: string,
-  Date: string;
+  Date: Date;
 }
 @Injectable({
   providedIn: 'root'
@@ -31,5 +32,21 @@ private apiUrl = 'https://nationalpartybackend-production.up.railway.app/api/eve
     return this.getEvents().pipe(
       map(events => events.slice().reverse().slice(0, 3))  // أول 3 أخبار
     );
+  }
+
+  editEvent(event: EventsList) {
+    const token = localStorage.getItem('token');
+
+    const headers = new HttpHeaders({
+      Authorization: `Bearer ${token}`
+    });
+  return this.http.put(
+    `${this.apiUrl}/${event.id}`,
+    event,
+    { headers }
+  );
+}
+ deleteEvents(id: number) {
+    return this.http.delete(`${this.apiUrl}/${id}`);
   }
 }

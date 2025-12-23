@@ -33,8 +33,18 @@
                         </p>
 
                     </div>
-                </div>
+                     <div class="mt-5 d-flex justify-content-between mx-4">
+                    <button *ngIf="isAdmin" class="btn btn-sm btn-primary" [routerLink]="['/EditEvent', item.id]">
+                        Edit
+                    </button>
 
+
+                    <button *ngIf="isAdmin" class="btn btn-sm btn-danger" (click)="deleteEvent(item.id)">
+                        Delete
+                    </button>
+                </div>
+               
+                </div>
             </div>
 
         </div>
