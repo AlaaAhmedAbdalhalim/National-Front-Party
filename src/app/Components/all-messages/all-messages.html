@@ -1,7 +1,4 @@
-
-
-<div class="my-5 py-5">
-
+<div class="mt-5 pt-5">
 <select
   class="form-select w-25 mb-4 my-5 mx-auto"
   [(ngModel)]="selectedType"
@@ -14,16 +11,31 @@
 </div>
 
 <!-- ================= MESSAGES ================= -->
-<div *ngIf="selectedType === 'messages'" class="container my-5">
-  <h3 class="text-center fw-bold">الرسائل</h3>
+<div *ngIf="selectedType === 'messages'" class="container my-4">
+  <h3 class="text-center fw-bold mb-4"> الرسائل</h3>
 
-  <div class="card mb-4 p-3" *ngFor="let mess of messages">
-    <h5>{{ mess.FullName }}</h5>
-    <p>{{ mess.Email }}</p>
-    <p>{{ mess.Phone }}</p>
-    <p>{{ mess.Message }}</p>
+  <div class="table-responsive">
+    <table class="table table-bordered table-hover align-middle">
+      <thead class="table-dark text-center">
+        <tr>
+          <th>الاسم</th>
+          <th>الإيميل</th>
+          <th>الهاتف</th>
+          <th>الرسالة</th>
+        </tr>
+      </thead>
+      <tbody>
+        <tr *ngFor="let mess of messages">
+          <td>{{ mess.FullName }}</td>
+          <td>{{ mess.Email }}</td>
+          <td>{{ mess.Phone }}</td>
+          <td>{{ mess.Message }}</td>
+        </tr>
+      </tbody>
+    </table>
   </div>
 </div>
+
 
 <!-- ================= MEMBERSHIP ================= -->
 <div *ngIf="selectedType === 'membership'" class="container my-5">
