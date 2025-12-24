@@ -38,27 +38,34 @@
             <div class="col-md-12 mb-4">
                 <div class="card p-4 shadow-sm">
                     <h4 class="mb-4 icon text-center fw-bold">راسلنا</h4>
-                    <form>
+                    <form #msgForm="ngForm" (ngSubmit)="addMessage(msgForm)">
                         <div class="mb-3">
                             <label class="form-label">الاسم</label>
-                            <input type="text" class="form-control">
+                            <input type="text" class="form-control" name="FullName" ngModel required>
                         </div>
+
                         <div class="mb-3">
                             <label class="form-label">الإيميل</label>
-                            <input type="email" class="form-control">
+                            <input type="email" class="form-control" name="Email" ngModel required>
                         </div>
+
                         <div class="mb-3">
                             <label class="form-label">رقم الموبايل</label>
-                            <input type="tel" class="form-control">
+                            <input type="tel" class="form-control" name="Phone" ngModel>
                         </div>
+
                         <div class="mb-3">
                             <label class="form-label">الرسالة</label>
-                            <textarea class="form-control" rows="6" p></textarea>
+                            <textarea class="form-control" rows="6" name="Message" ngModel required></textarea>
                         </div>
-                        <div class="text-center ">
-                            <button type="submit" class="btn btn-primary col-9 col-md-6 col-lg-4">إرسال الرسالة</button>
+
+                        <div class="text-center">
+                            <button type="submit" class="btn btn-primary col-9 col-md-6 col-lg-4">
+                                إرسال الرسالة
+                            </button>
                         </div>
                     </form>
+
                 </div>
             </div>
 

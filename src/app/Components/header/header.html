@@ -16,7 +16,10 @@
                 <a class="nav-link active text-white-50 fw-bold" aria-current="page" routerLink='Home'>الرئيسية</a>
             </li>
             <li class="nav-item me-2 fs-5">
-                <a class="nav-link text-white-50" routerLink='About'>من نحن </a>
+                <a class="nav-link text-white-50" routerLink='About'  *ngIf="!authService.isAdmin()" >من نحن </a>
+            </li>
+             <li class="nav-item me-2 fs-5">
+                <a class="nav-link text-white-50" routerLink='AllMessages'  *ngIf="authService.isAdmin()" > الرسائل </a>
             </li>
             <li class="nav-item me-2 fs-5">
                 <a class="nav-link text-white-50" routerLink='AllMembers'>الأعضاء </a>
@@ -26,6 +29,9 @@
             </li>
             <li class="nav-item me-2 fs-5">
                 <a class="nav-link text-white-50" routerLink='AllEvents'> الفاعليات </a>
+            </li>
+            <li class="nav-item me-2 fs-5">
+                <a class="nav-link text-white-50" routerLink='Admin' *ngIf="authService.isAdmin()" > الاضافة </a>
             </li>
         </ul>
         <button type="button"  *ngIf="!authService.isAdmin()" class="btn btn-primary rounded-pill me-3 px-5 py-3 text-light border-0 " routerLink="ContactUs">تواصل معنا</button>

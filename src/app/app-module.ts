@@ -24,6 +24,7 @@ import { Login } from './Components/login/login';
 import { EditMember } from './Components/edit-member/edit-member';
 import { EditEvents } from './Components/edit-events/edit-events';
 import { EditNews } from './Components/edit-news/edit-news';
+import { AllMessages } from './Components/all-messages/all-messages';
 
 @NgModule({
   declarations: [
@@ -44,7 +45,8 @@ import { EditNews } from './Components/edit-news/edit-news';
     Login,
     EditMember,
     EditEvents,
-    EditNews
+    EditNews,
+    AllMessages
   ],
   imports: [
     BrowserModule,
