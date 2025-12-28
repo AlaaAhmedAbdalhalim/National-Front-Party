@@ -1,263 +1,350 @@
 <div class="container my-5">
 
-    <h4 class="mt-5 pt-5 pb-2 text-center icon fw-bold">استمارة العضوية</h4>
-    <p class="text-center">
-        نشكرك على اهتمامك بالانضمام إلى حزب الجبهة الوطنية، يرجى تعبئة البيانات التالية للتقديم للعضوية.
-    </p>
+  <h4 class="mt-5 pt-5 pb-2 text-center icon fw-bold">استمارة العضوية</h4>
+  <p class="text-center">
+    نشكرك على اهتمامك بالانضمام إلى حزب الجبهة الوطنية
+  </p>
 
-    <!-- شروط -->
-    <div class="alert alert-warning">
-        شروط التقدم للعضوية
-        <ol>
-            <li>أن يكون مصريًا…</li>
-            <li>أن يكون قد أتم 18 عامًا…</li>
-            <li>أن لا يكون منتميًا لحزب آخر…</li>
-            <li>أن يكون متمتعًا بحقوقه السياسية…</li>
-        </ol>
-    </div>
-<div class="alert alert-danger">
-    الرجاء التأكد من صحة البيانات المدخلة. جميع البيانات سرية.
-</div>
-    <!-- Progress Bar -->
-    <div class="progress my-4" style="height: 20px;">
-        <div class="progress-bar" role="progressbar" [style.width]="progress + '%'">
-            خطوة {{ currentStep + 1 }} من {{ totalSteps }}
-        </div>
-    </div>
+  <div class="alert alert-warning">
+    <strong>شروط التقدم للعضوية</strong>
+    <ol>
+      <li>أن يكون مصريًا</li>
+      <li>أتم 18 عامًا</li>
+      <li>غير منتمي لحزب آخر</li>
+      <li>متمتع بحقوقه السياسية</li>
+    </ol>
+  </div>
 
-    <!-- ---------------- STEP 1 ---------------- -->
+  <!-- Progress -->
+  <div class="progress my-4" style="height:20px">
+    <div class="progress-bar" [style.width]="progress + '%'">
+      خطوة {{ currentStep + 1 }} من {{ totalSteps }}
+    </div>
+  </div>
+
+  <form [formGroup]="membershipForm">
+
+    <!-- ================= STEP 1 ================= -->
     <div *ngIf="currentStep === 0" class="card p-4 shadow">
+      <h5 class="text-center icon mb-3">البيانات الأساسية</h5>
 
-        <h5 class="mb-3 icon text-center">البيانات الأساسية</h5>
-
-        <div class="row g-3">
-            <div class="col-md-6">
-                <label class="form-label">الاسم الرباعي</label>
-                <input type="text" class="form-control" required>
-            </div>
-
-            <div class="col-md-6">
-                <label class="form-label">تاريخ الميلاد</label>
-                <input type="date" class="form-control">
-            </div>
-
-            <div class="col-md-6">
-                <label class="form-label">النوع</label>
-                <select class="form-select">
-                    <option selected>أختر</option>
-                    <option>ذكر</option>
-                    <option>أنثى</option>
-                </select>
-            </div>
-
-            <div class="col-md-6">
-                <label class="form-label">الحالة الاجتماعية</label>
-                <select class="form-select">
-                    <option selected>أختر</option>
-                    <option>أعزب</option>
-                    <option>متزوج</option>
-                    <option>مطلق</option>
-                    <option>أرمل</option>
-                </select>
+      <div class="row g-3">
+        <div class="col-md-6">
+          <label>الاسم الرباعي</label>
+          <input class="form-control" formControlName="FullName">
+          
+            <div class="text-danger mt-1"
+             *ngIf="membershipForm.get('FullName')?.touched &&
+            membershipForm.get('FullName')?.hasError('required')">
+             الاسم الرباعي مطلوب
             </div>
         </div>
 
-        <button class="btn btn-primary mt-4" (click)="nextStep()">التالي</button>
+        <div class="col-md-6">
+          <label>تاريخ الميلاد</label>
+          <input type="date" class="form-control" formControlName="BirthDate">
+             <div class="text-danger mt-1"
+             *ngIf="membershipForm.get('BirthDate')?.touched &&
+            membershipForm.get('BirthDate')?.hasError('required')">
+             تاريخ الميلاد مطلوب
+            </div>
+        </div>
+
+        <div class="col-md-6">
+          <label>النوع</label>
+          <select class="form-select" formControlName="Gender">
+            <option value="">أختر</option>
+            <option value="male">ذكر</option>
+            <option value="female">أنثى</option>
+          </select>
+              <div class="text-danger mt-1"
+             *ngIf="membershipForm.get('Gender')?.touched &&
+            membershipForm.get('Gender')?.hasError('required')">
+             النوع مطلوب
+            </div>
+        </div>
+
+        <div class="col-md-6">
+          <label>الحالة الاجتماعية</label>
+          <select class="form-select" formControlName="MaritalStatus">
+            <option value="">أختر</option>
+            <option value="single">أعزب</option>
+            <option value="married">متزوج</option>
+            <option value="divorced">مطلق</option>
+            <option value="widowed">أرمل</option>
+          </select>
+              <div class="text-danger mt-1"
+             *ngIf="membershipForm.get('MaritalStatus')?.touched &&
+            membershipForm.get('MaritalStatus')?.hasError('required')">
+             الحالة الاجتماعية مطلوبة
+            </div>
+        </div>
+      </div>
+
+      <button class="btn btn-primary mt-4" (click)="nextStep()">التالي</button>
     </div>
 
-    <!-- ---------------- STEP 2 ---------------- -->
+    <!-- ================= STEP 2 ================= -->
     <div *ngIf="currentStep === 1" class="card p-4 shadow">
+      <h5 class="text-center icon mb-3">بيانات العنوان والتواصل</h5>
 
-        <h5 class="mb-3 icon  text-center">بيانات العنوان والتواصل</h5>
-
-        <div class="row g-3">
-            <div class="col-12">
-                <label class="form-label">العنوان</label>
-                <input type="text" class="form-control">
-            </div>
-
-            <div class="col-12">
-                <label class="form-label">الوحدة الحزبية</label>
-                <input type="text" class="form-control">
-            </div>
-
-            <div class="col-md-6">
-                <label class="form-label">المحافظة</label>
-                <select class="form-select">
-                    <option>السويس</option>
-                </select>
-            </div>
-
-            <div class="col-md-6">
-                <label class="form-label">القسم / المركز</label>
-                <select class="form-select">
-                    <option selected>أختر</option>
-                    <option>السويس</option>
-                    <option>الجناين</option>
-                    <option>عتاقة</option>
-                    <option>العين السخنة</option>
-                    <option>فيصل</option>
-                </select>
-            </div>
-
-            <div class="col-12">
-                <label class="form-label">الهاتف المحمول</label>
-                <input type="tel" class="form-control">
-            </div>
-
-            <div class="col-12">
-                <label class="form-label">البريد الإلكتروني</label>
-                <input type="email" class="form-control">
+      <div class="row g-3">
+        <div class="col-12">
+          <label>العنوان</label>
+          <input class="form-control" formControlName="Address">
+              <div class="text-danger mt-1"
+             *ngIf="membershipForm.get('Address')?.touched &&
+            membershipForm.get('Address')?.hasError('required')">
+             العنوان مطلوب
             </div>
         </div>
 
-        <div class="mt-4 d-flex justify-content-between">
-            <button class="btn btn-secondary" (click)="prevStep()">رجوع</button>
-            <button class="btn btn-primary" (click)="nextStep()">التالي</button>
+        <div class="col-12">
+          <label>الوحدة الحزبية</label>
+          <input class="form-control" formControlName="PartyUnit">
         </div>
+
+        <div class="col-md-6">
+          <label>المحافظة</label>
+          <select class="form-select" formControlName="Governorate">
+            <option value="">أختر</option>
+            <option value="السويس">السويس</option>
+          </select>
+              <div class="text-danger mt-1"
+             *ngIf="membershipForm.get('Governorate')?.touched &&
+            membershipForm.get('Governorate')?.hasError('required')">
+             المحافظة مطلوبة
+            </div>
+        </div>
+
+        <div class="col-md-6">
+          <label>القسم / المركز</label>
+          <select class="form-select" formControlName="District">
+            <option value="">أختر</option>
+            <option value="السويس">السويس</option>
+            <option value="الجناين">الجناين</option>
+            <option value="عتاقة">عتاقة</option>
+            <option value="العين السخنة">العين السخنة</option>
+            <option value="فيصل">فيصل</option>
+          </select>
+                    <div class="text-danger mt-1"
+             *ngIf="membershipForm.get('District')?.touched &&
+            membershipForm.get('District')?.hasError('required')">
+             القسم / المركز مطلوب
+            </div>
+        </div>
+
+        <div class="col-md-6">
+          <label>الهاتف</label>
+          <input class="form-control" formControlName="Phone">
+                    <div class="text-danger mt-1"
+             *ngIf="membershipForm.get('Phone')?.touched &&
+            membershipForm.get('Phone')?.hasError('required')">
+             الهاتف مطلوب
+            </div>
+        </div>
+
+        <div class="col-md-6">
+          <label>البريد الإلكتروني</label>
+          <input class="form-control" formControlName="Email">
+        </div>
+      </div>
+
+      <div class="mt-4 d-flex justify-content-between">
+        <button class="btn btn-secondary" (click)="prevStep()">رجوع</button>
+        <button class="btn btn-primary" (click)="nextStep()">التالي</button>
+      </div>
     </div>
 
-    <!-- ---------------- STEP 3 ---------------- -->
+    <!-- ================= STEP 3 ================= -->
     <div *ngIf="currentStep === 2" class="card p-4 shadow">
+      <h5 class="text-center icon mb-3">البيانات الرسمية</h5>
 
-        <h5 class="mb-3 icon  text-center">بيانات البطاقة والمؤهل والملفات</h5>
-
-        <div class="row g-3">
-
-            <div class="col-md-6">
-                <label class="form-label">الرقم القومي</label>
-                <input type="text" class="form-control">
+      <div class="row g-3">
+        <div class="col-md-6">
+          <label>الرقم القومي</label>
+          <input class="form-control" formControlName="NationalId">
+                    <div class="text-danger mt-1"
+             *ngIf="membershipForm.get('NationalId')?.touched &&
+            membershipForm.get('NationalId')?.hasError('required')">
+             الرقم القومي مطلوب
             </div>
-
-            <div class="col-md-6">
-                <label class="form-label">تاريخ الانتهاء</label>
-                <input type="date" class="form-control">
-            </div>
-
-            <div class="col-12">
-                <label class="form-label">تحميل البطاقة (وجه)</label>
-                <input type="file" class="form-control">
-            </div>
-
-            <div class="col-12">
-                <label class="form-label">تحميل البطاقة (ظهر)</label>
-                <input type="file" class="form-control">
-            </div>
-
-            <div class="col-12">
-                <label class="form-label">تحميل صورة شخصية</label>
-                <input type="file" class="form-control">
-            </div>
-
-            <div class="col-md-4">
-                <label class="form-label">المؤهل الدراسي</label>
-                <select class="form-select">
-                    <option selected>أختر</option>
-                    <option>مؤهل عالي</option>
-                    <option>مؤهل متوسط</option>
-                    <option>بدون مؤهل</option>
-                </select>
-            </div>
-
-            <div class="col-md-4">
-                <label class="form-label">الدرجة العلمية الأعلى</label>
-                <select class="form-select">
-                    <option selected>أختر</option>
-                    <option>لا يوجد</option>
-                    <option>ماجستير</option>
-                    <option>دكتوراه</option>
-                </select>
-            </div>
-
-            <div class="col-md-4">
-                <label class="form-label">المهنة / الوظيفة</label>
-                <input type="text" class="form-control">
-            </div>
-
-            <div class="col-md-6">
-                <label class="form-label">عنوان جهة العمل</label>
-                <input type="text" class="form-control">
-            </div>
-
-            <div class="col-md-6">
-                <label class="form-label">جهة العمل</label>
-                <input type="text" class="form-control">
-            </div>
-
         </div>
 
-        <div class="mt-4 d-flex justify-content-between">
-            <button class="btn btn-secondary" (click)="prevStep()">رجوع</button>
-            <button class="btn btn-primary" (click)="nextStep()">التالي</button>
+        <div class="col-md-6">
+          <label>تاريخ الانتهاء</label>
+          <input type="date" class="form-control" formControlName="IdExpiryDate">
+                    <div class="text-danger mt-1"
+             *ngIf="membershipForm.get('IdExpiryDate')?.touched &&
+            membershipForm.get('IdExpiryDate')?.hasError('required')">
+             تاريخ الانتهاء مطلوب
+            </div>
         </div>
+
+        <div class="col-12">
+          <label>صورة البطاقة (وجه)</label>
+          <input type="file" class="form-control"
+                 (change)="onFileChange($event,'IdFrontImage')">
+                           <div class="text-danger mt-1"
+             *ngIf="membershipForm.get('IdFrontImage')?.touched &&
+            membershipForm.get('IdFrontImage')?.hasError('required')">
+             صورة البطاقة (وجه) مطلوبة
+            </div>
+        </div>
+
+        <div class="col-12">
+          <label>صورة البطاقة (ظهر)</label>
+          <input type="file" class="form-control"
+                 (change)="onFileChange($event,'IdBackImage')">
+           <div class="text-danger mt-1"
+             *ngIf="membershipForm.get('IdBackImage')?.touched &&
+            membershipForm.get('IdBackImage')?.hasError('required')">
+             صورة البطاقة (ظهر)  مطلوبة
+            </div>
+        </div>
+
+        <div class="col-12">
+          <label>صورة شخصية</label>
+          <input type="file" class="form-control"
+                 (change)="onFileChange($event,'PersonalPhoto')">
+                            <div class="text-danger mt-1"
+             *ngIf="membershipForm.get('PersonalPhoto')?.touched &&
+            membershipForm.get('PersonalPhoto')?.hasError('required')">
+             صورة شخصية مطلوبة
+            </div>
+        </div>
+
+        <div class="col-md-4">
+          <label>المؤهل الدراسي</label>
+          <select class="form-select" formControlName="EducationLevel">
+            <option value="">أختر</option>
+            <option>مؤهل عالي</option>
+            <option>مؤهل متوسط</option>
+            <option>بدون مؤهل</option>
+          </select>
+                     <div class="text-danger mt-1"
+             *ngIf="membershipForm.get('EducationLevel')?.touched &&
+            membershipForm.get('EducationLevel')?.hasError('required')">
+             المؤهل الدراسي مطلوب
+            </div>
+        </div>
+
+        <div class="col-md-4">
+          <label>الدرجة العلمية</label>
+          <select class="form-select" formControlName="HigherDegree">
+            <option value="">أختر</option>
+            <option>لا يوجد</option>
+            <option>ماجستير</option>
+            <option>دكتوراه</option>
+          </select>
+        </div>
+
+        <div class="col-md-4">
+          <label>المهنة / الوظيفة </label>
+          <input class="form-control" formControlName="JobTitle">
+                     <div class="text-danger mt-1"
+             *ngIf="membershipForm.get('JobTitle')?.touched &&
+            membershipForm.get('JobTitle')?.hasError('required')">
+             المهنة / الوظيفة مطلوبة
+            </div>
+        </div>
+
+        <div class="col-md-6">
+          <label>عنوان جهة العمل</label>
+          <input class="form-control" formControlName="JobAddress">
+        </div>
+
+        <div class="col-md-6">
+          <label>جهة العمل</label>
+          <input class="form-control" formControlName="WorkPlace">
+        </div>
+      </div>
+
+      <div class="mt-4 d-flex justify-content-between">
+        <button class="btn btn-secondary" (click)="prevStep()">رجوع</button>
+        <button class="btn btn-primary" (click)="nextStep()">التالي</button>
+      </div>
     </div>
 
-    <!-- ---------------- STEP 4 ---------------- -->
+    <!-- ================= STEP 4 ================= -->
     <div *ngIf="currentStep === 3" class="card p-4 shadow">
+      <h5 class="text-center icon mb-3">الإقرارات</h5>
 
-        <h5 class="mb-3 icon  text-center">أسئلة العضوية والإقرارات</h5>
-
-        <div class="row g-3">
-
-            <div class="col-md-6">
-                <label class="form-label">هل كنت عضوًا بأي حزب سابقاً؟</label>
-                <select class="form-select">
-                    <option selected>أختر</option>
-                    <option>لا</option>
-                    <option>نعم</option>
-                </select>
+      <div class="row g-3">
+        <div class="col-md-6">
+          <label>  هل كنت عضو بأي حزب سياسي سابقا ؟</label>
+          <select class="form-select" formControlName="PreviousParty">
+            <option value="">أختر</option>
+            <option>لا</option>
+            <option>نعم</option>
+          </select>
+                     <div class="text-danger mt-1"
+             *ngIf="membershipForm.get('PreviousParty')?.touched &&
+            membershipForm.get('PreviousParty')?.hasError('required')">
+             عضوية حزب سابق مطلوبة
             </div>
-
-            <div class="col-md-6">
-                <label class="form-label">هل كنت في المجالس النيابية؟</label>
-                <select class="form-select">
-                    <option selected>أختر</option>
-                    <option>لا</option>
-                    <option>نعم</option>
-                </select>
-            </div>
-
-            <div class="col-md-6">
-                <label class="form-label">عضوية النقابات</label>
-                <select class="form-select">
-                    <option selected>أختر</option>
-                    <option>لا</option>
-                    <option>نعم</option>
-                </select>
-            </div>
-
-            <div class="col-md-6">
-                <label class="form-label">هل حصلت على جوائز؟</label>
-                <select class="form-select">
-                    <option selected>أختر</option>
-                    <option>لا</option>
-                    <option>نعم</option>
-                </select>
-            </div>
-
-            <div class="col-12 mt-3">
-                <div class="form-check">
-                    <input class="form-check-input" type="checkbox">
-                    <label class="form-check-label">
-                        أوافق على شروط التقدم للعضوية
-                    </label>
-                </div>
-
-                <div class="form-check mt-2">
-                    <input class="form-check-input" type="checkbox">
-                    <label class="form-check-label">
-                        أقر بصحة جميع البيانات المذكورة
-                    </label>
-                </div>
-            </div>
-
         </div>
 
-        <div class="mt-4 d-flex justify-content-between">
-            <button class="btn btn-secondary" (click)="prevStep()">رجوع</button>
-            <button class="btn btn-success px-4" (click)="submitForm()">إرسال الطلب</button>
+        <div class="col-md-6">
+          <label> هل كنت بأي المجالس النيابية سابقا أو حاليا؟</label>
+          <select class="form-select" formControlName="ParliamentMember">
+            <option value="">أختر</option>
+            <option>لا</option>
+            <option>نعم</option>
+          </select>
+                     <div class="text-danger mt-1"
+             *ngIf="membershipForm.get('ParliamentMember')?.touched &&
+            membershipForm.get('ParliamentMember')?.hasError('required')">
+             عضوية مجلس نيابي مطلوبة
+            </div>
         </div>
 
+        <div class="col-md-6">
+          <label>عضوية نقابات؟</label>
+          <select class="form-select" formControlName="UnionMembership">
+            <option value="">أختر</option>
+            <option>لا</option>
+            <option>نعم</option>
+          </select>
+                     <div class="text-danger mt-1"
+             *ngIf="membershipForm.get('UnionMembership')?.touched &&
+            membershipForm.get('UnionMembership')?.hasError('required')">
+             عضوية نقابات مطلوبة
+            </div>
+        </div>
+
+        <div class="col-md-6">
+          <label>جوائز؟</label>
+          <select class="form-select" formControlName="Awards">
+            <option value="">أختر</option>
+            <option>لا</option>
+            <option>نعم</option>
+          </select>
+                        <div class="text-danger mt-1"
+                *ngIf="membershipForm.get('Awards')?.touched &&
+                membershipForm.get('Awards')?.hasError('required')">
+                الجوائز مطلوبة
+                </div>
+        </div>
+
+        <div class="col-12">
+          <div class="form-check">
+            <input type="checkbox" class="form-check-input" formControlName="AgreeTerms">
+            <label class="form-check-label">أوافق على الشروط</label>
+          </div>
+
+          <div class="form-check mt-2">
+            <input type="checkbox" class="form-check-input" formControlName="ConfirmData">
+            <label class="form-check-label">أقر بصحة البيانات</label>
+          </div>
+        </div>
+      </div>
+
+      <div class="mt-4 d-flex justify-content-between">
+        <button class="btn btn-secondary" (click)="prevStep()">رجوع</button>
+        <button class="btn btn-success" (click)="submitForm()">إرسال الطلب</button>
+      </div>
     </div>
 
+  </form>
 </div>

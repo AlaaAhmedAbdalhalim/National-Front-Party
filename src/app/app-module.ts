@@ -25,6 +25,7 @@ import { EditMember } from './Components/edit-member/edit-member';
 import { EditEvents } from './Components/edit-events/edit-events';
 import { EditNews } from './Components/edit-news/edit-news';
 import { AllMessages } from './Components/all-messages/all-messages';
+import { ReactiveFormsModule } from '@angular/forms';
 
 @NgModule({
   declarations: [
@@ -53,7 +54,8 @@ import { AllMessages } from './Components/all-messages/all-messages';
     AppRoutingModule,
     MatIconModule,
     FormsModule,
-    HttpClientModule
+    HttpClientModule,
+    ReactiveFormsModule
   ],
 providers: [
   provideBrowserGlobalErrorListeners(),
